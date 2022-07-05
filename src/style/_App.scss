@@ -1,6 +1,9 @@
 .App {
 	text-align: center;
 	.App-header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		background-color: #222;
 		height: 150px;
 		padding: 20px;
@@ -17,7 +20,15 @@
 		}
 		input {
 			width: 100px;
+			text-align: center;
+			font-size: 1rem;
+			padding: 0.5rem;
 		}
+	}
+	.generate-btn {
+		font-size: 1.25rem;
+		text-transform: uppercase;
+		padding: 0.5rem;
 	}
 	.output-password {
 		display: flex;
@@ -25,7 +36,8 @@
 		align-items: center;
 		h4 {
 			padding: 1rem;
-			width: 100px;
+			border: 1px solid #000;
+			letter-spacing: 1rem;
 		}
 	}
 }

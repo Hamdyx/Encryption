@@ -7,9 +7,8 @@ const App: React.FC = () => {
 	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		const inputLen = parseInt(ev.target.value);
 		setPassLen(inputLen);
-		generatePass(inputLen);
 	};
-	const generatePass = (l: number) => {
+	const generatePass = () => {
 		//* symbol => 33 | symbol => 47
 		//* number => 48 | number => 57
 		//* symbol => 58 | symbol => 64
@@ -17,7 +16,7 @@ const App: React.FC = () => {
 		//* symbol => 91 | symbol => 96
 		//* a => 97 | z => 122
 		//* symbol => 123 | symbol => 126
-		const passArr = Array(l);
+		const passArr = Array(passLen);
 		for (let i = 0; i < passArr.length; i++) {
 			const randNumber = Math.random() * 93; //* 126 - 33
 			const randCode = Math.floor(randNumber) + 33;
@@ -43,9 +42,12 @@ const App: React.FC = () => {
 					max={16}
 				/>
 			</div>
+			<button onClick={generatePass} className="generate-btn">
+				Generate
+			</button>
 			<div className="output-password">
 				<h3>Generated Password</h3>
-				<h4>{passStr}</h4>
+				{passStr && <h4>{passStr}</h4>}
 			</div>
 		</div>
 	);
