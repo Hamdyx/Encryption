@@ -1,0 +1,31 @@
+.App {
+	text-align: center;
+	.App-header {
+		background-color: #222;
+		height: 150px;
+		padding: 20px;
+		color: white;
+	}
+	.password_length-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 1rem;
+		gap: 0.5rem;
+		label {
+			font-size: 1.25rem;
+		}
+		input {
+			width: 100px;
+		}
+	}
+	.output-password {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		h4 {
+			padding: 1rem;
+			width: 100px;
+		}
+	}
+}

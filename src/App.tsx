@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import './App.css';
 
 const App: React.FC = () => {
 	const [passLen, setPassLen] = useState(6);
@@ -33,19 +32,20 @@ const App: React.FC = () => {
 			<div className="App-header">
 				<h2>Password Generator</h2>
 			</div>
-
-			<input
-				type="number"
-				onChange={handleChange}
-				value={passLen}
-				min={6}
-				max={16}
-			/>
-			<div>
-				<h3>Generated Passord</h3>
-				<h4 style={{ border: '1px solid black', padding: '1rem' }}>
-					{passStr}
-				</h4>
+			<div className="password_length-container">
+				<label htmlFor="password_length">Password Length</label>
+				<input
+					type="number"
+					id="password_length"
+					onChange={handleChange}
+					value={passLen}
+					min={6}
+					max={16}
+				/>
+			</div>
+			<div className="output-password">
+				<h3>Generated Password</h3>
+				<h4>{passStr}</h4>
 			</div>
 		</div>
 	);
