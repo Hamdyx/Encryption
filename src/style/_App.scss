@@ -1,13 +1,26 @@
 .App {
 	text-align: center;
+	background-color: #222;
+	color: #fff;
 	.App-header {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #222;
+		color: #000;
 		height: 150px;
 		padding: 20px;
-		color: white;
+
+		background: #fceabb; /* fallback for old browsers */
+		background: -webkit-linear-gradient(
+			to right,
+			#f8b500,
+			#fceabb
+		); /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(
+			to right,
+			#f8b500,
+			#fceabb
+		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 	.password_length-container,
 	.cipher_encryption-container {
@@ -29,25 +42,32 @@
 			text-align: center;
 			font-size: 1rem;
 			padding: 0.5rem;
+
+			background: #7d7d7d;
+			border: 1px solid #ffffff2e;
+			border-radius: 8px;
+			color: #fff;
 		}
 	}
 	.password_length-container {
 		flex-direction: column;
 	}
 
-	.generate-btn {
-		font-size: 1.25rem;
-		text-transform: uppercase;
-		padding: 0.5rem;
-	}
 	.output-password {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		h4 {
 			padding: 1rem;
-			border: 1px solid #000;
 			letter-spacing: 1rem;
+
+			min-height: 20px;
+			min-width: 250px;
+			background: #ffffff40;
+			box-shadow: 0 4px 16px 0 #1f26875e;
+			backdrop-filter: blur(10px);
+			border-radius: 10px;
+			border: 1px solid #ffffff2e;
 		}
 	}
 }

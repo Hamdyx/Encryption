@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
 
 const CaesarCipher: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
@@ -76,12 +76,10 @@ const CaesarCipher: React.FC = () => {
 					/>
 				</div>
 			</div>
-			<button onClick={encryptText} className="generate-btn">
-				Encrypt
-			</button>
+			<CustomAnimatedBtn title="Encrypt" onClick={encryptText} />
 			<div className="output-password">
 				<h3>Encrypted Text</h3>
-				{encryptedStr && <h4>{encryptedStr}</h4>}
+				<h4>{encryptedStr}</h4>
 			</div>
 		</div>
 	);

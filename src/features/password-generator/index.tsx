@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
 
 const PasswordGenerator: React.FC = () => {
 	const [passLen, setPassLen] = useState(6);
@@ -42,12 +42,11 @@ const PasswordGenerator: React.FC = () => {
 					max={16}
 				/>
 			</div>
-			<button onClick={generatePass} className="generate-btn">
-				Generate
-			</button>
+			<CustomAnimatedBtn title="Generate" onClick={generatePass} />
+
 			<div className="output-password">
 				<h3>Generated Password</h3>
-				{passStr && <h4>{passStr}</h4>}
+				<h4>{passStr}</h4>
 			</div>
 		</div>
 	);
