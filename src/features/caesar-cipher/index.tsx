@@ -17,8 +17,8 @@ const CaesarCipher: React.FC = () => {
 
 	const lowerCaseReg = /[a-z]/;
 	const upperCaseReg = /[A-Z]/;
-
 	const encryptUpperCase = (letter: string) => {
+		//* A => 65 | Z => 90
 		let enc = letter.charCodeAt(0);
 		enc += inputKey;
 		while (enc > 90) enc = 64 + (enc - 90);
@@ -26,9 +26,10 @@ const CaesarCipher: React.FC = () => {
 		return String.fromCharCode(enc);
 	};
 	const encryptLowerCase = (letter: string) => {
+		//* a => 97 | z => 122
 		let enc = letter.charCodeAt(0);
 		enc += inputKey;
-		while (enc > 122) enc = 64 + (enc - 122);
+		while (enc > 122) enc = 96 + (enc - 122);
 
 		return String.fromCharCode(enc);
 	};
