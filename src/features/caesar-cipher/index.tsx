@@ -1,55 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CipherEcryption from './components/CipherEncryption';
 import CipherDecryption from './components/CipherDecryption';
 
 const CaesarCipher: React.FC = () => {
-	const [inputKey, setInputKey] = useState(1);
-	const [inputText, setInputText] = useState('');
-	const [encryptedStr, setEncryptedStr] = useState('');
-
-	const handleTextChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const inputValue = ev.target.value;
-		setInputText(inputValue);
-	};
-	const handleKeyChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const inputValue = parseInt(ev.target.value);
-		setInputKey(inputValue);
-	};
-
-	const lowerCaseReg = /[a-z]/;
-	const upperCaseReg = /[A-Z]/;
-	const encryptUpperCase = (letter: string) => {
-		//* A => 65 | Z => 90
-		let enc = letter.charCodeAt(0);
-		enc += inputKey;
-		while (enc > 90) enc = 64 + (enc - 90);
-
-		return String.fromCharCode(enc);
-	};
-	const encryptLowerCase = (letter: string) => {
-		//* a => 97 | z => 122
-		let enc = letter.charCodeAt(0);
-		enc += inputKey;
-		while (enc > 122) enc = 96 + (enc - 122);
-
-		return String.fromCharCode(enc);
-	};
-
-	const encryptText = () => {
-		const _encrypted: string[] = Array(inputText.length);
-		for (let i = 0; i < inputText.length; i++) {
-			if (lowerCaseReg.test(inputText[i])) {
-				_encrypted[i] = encryptLowerCase(inputText[i]);
-			} else if (upperCaseReg.test(inputText[i])) {
-				_encrypted[i] = encryptUpperCase(inputText[i]);
-			} else {
-				_encrypted[i] = inputText[i];
-			}
-		}
-		const tmp = _encrypted.join('');
-		setEncryptedStr(tmp);
-	};
-
 	return (
 		<div className="caesar-cipher">
 			<CipherEcryption />

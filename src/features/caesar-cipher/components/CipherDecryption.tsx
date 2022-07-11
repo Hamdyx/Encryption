@@ -55,7 +55,7 @@ const CipherDecryption: React.FC = () => {
 				<h2>Caesar Cipher Decryption</h2>
 			</div>
 			<div className="cipher_encryption-container">
-				<div className="aa">
+				<div className="cipher-input">
 					<label htmlFor="cipher_decryption-txt">Text</label>
 					<input
 						type="text"
@@ -64,7 +64,7 @@ const CipherDecryption: React.FC = () => {
 						value={inputText}
 					/>
 				</div>
-				<div className="aa">
+				<div className="cipher-input">
 					<label htmlFor="cipher_decryption-key">Key</label>
 					<input
 						type="number"
