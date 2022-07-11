@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import CipherEcryption from './components/CipherEncryption';
-import CipherDecryption from './components/CipherDecryption';
+import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
 
-const CaesarCipher: React.FC = () => {
+const CipherEncryption: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
 	const [inputText, setInputText] = useState('');
 	const [encryptedStr, setEncryptedStr] = useState('');
@@ -51,11 +50,39 @@ const CaesarCipher: React.FC = () => {
 	};
 
 	return (
-		<div className="caesar-cipher">
-			<CipherEcryption />
-			<CipherDecryption />
+		<div className="cipher-encryption">
+			<div className="App-header">
+				<h2>Caesar Cipher Encryption</h2>
+			</div>
+			<div className="cipher_encryption-container">
+				<div className="aa">
+					<label htmlFor="cipher_encryption">Text</label>
+					<input
+						type="text"
+						id="cipher_encryption"
+						onChange={handleTextChange}
+						value={inputText}
+					/>
+				</div>
+				<div className="aa">
+					<label htmlFor="cipher_encryption">Key</label>
+					<input
+						type="number"
+						id="cipher_encryption"
+						onChange={handleKeyChange}
+						value={inputKey}
+						min={1}
+						max={10}
+					/>
+				</div>
+			</div>
+			<CustomAnimatedBtn title="Encrypt" onClick={encryptText} />
+			<div className="output-password">
+				<h3>Encrypted Text</h3>
+				<h4>{encryptedStr}</h4>
+			</div>
 		</div>
 	);
 };
 
-export default CaesarCipher;
+export default CipherEncryption;
