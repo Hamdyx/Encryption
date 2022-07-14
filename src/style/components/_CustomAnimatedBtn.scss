@@ -27,12 +27,12 @@
 		.svg-wrapper {
 			animation: fly-1 0.6s ease-in-out infinite alternate;
 			svg {
-				transform: translateX(1.2em) rotate(45deg) scale(1.1);
+				animation: rollover 1.5s ease-in-out infinite alternate;
 			}
 		}
 
 		span {
-			transform: translateX(5em);
+			transform: translateX(5.125em);
 		}
 	}
 	&:active {
@@ -47,5 +47,15 @@
 
 	to {
 		transform: translateY(-0.1em);
+	}
+}
+
+@keyframes rollover {
+	from {
+		transform: translateX(1em) rotate(0deg) scale(1);
+	}
+
+	to {
+		transform: translateX(4em) rotate(360deg) scale(1.25);
 	}
 }
