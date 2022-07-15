@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
+import { AiFillLock } from 'react-icons/ai';
 
 const CipherEncryption: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
 	const [inputText, setInputText] = useState('');
 	const [encryptedStr, setEncryptedStr] = useState('');
 
-	const handleTextChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleTextChange = (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const inputValue = ev.target.value;
 		setInputText(inputValue);
 	};
 	const handleKeyChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const inputValue = parseInt(ev.target.value);
+		let inputValue = parseInt(ev.target.value);
+		inputValue = inputValue > 100 ? 100 : inputValue;
 		setInputKey(inputValue);
 	};
 
@@ -57,8 +59,7 @@ const CipherEncryption: React.FC = () => {
 			<div className="cipher_encryption-container">
 				<div className="cipher-input">
 					<label htmlFor="cipher_encryption">Text</label>
-					<input
-						type="text"
+					<textarea
 						id="cipher_encryption"
 						onChange={handleTextChange}
 						value={inputText}
@@ -77,9 +78,10 @@ const CipherEncryption: React.FC = () => {
 				</div>
 			</div>
 			<CustomAnimatedBtn title="Encrypt" onClick={encryptText} />
-			<div className="output-password">
-				<h3>Encrypted Text</h3>
-				<h4>{encryptedStr}</h4>
+			<div className="output-container --cipher">
+				<h3>Encrypted</h3>
+				<AiFillLock className="lock_icon" />
+				<div className="output-box --cipher">{encryptedStr}</div>
 			</div>
 		</div>
 	);

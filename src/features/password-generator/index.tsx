@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
+import { AiFillLock } from 'react-icons/ai';
 
 const PasswordGenerator: React.FC = () => {
 	const [passLen, setPassLen] = useState(6);
 	const [passStr, setPassStr] = useState('');
+
 	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const inputLen = parseInt(ev.target.value);
+		let inputLen = parseInt(ev.target.value);
+		inputLen = inputLen > 32 ? 32 : inputLen;
 		setPassLen(inputLen);
 	};
 	const generatePass = () => {
@@ -44,9 +47,14 @@ const PasswordGenerator: React.FC = () => {
 			</div>
 			<CustomAnimatedBtn title="Generate" onClick={generatePass} />
 
-			<div className="output-password">
+			<div className="output-container --password">
 				<h3>Generated Password</h3>
-				<h4>{passStr}</h4>
+				<AiFillLock className="lock_icon" />
+				<div className="output-box">
+					{[...passStr].map((c: string, i: number) => (
+						<span key={i}>{c}</span>
+					))}
+				</div>
 			</div>
 		</div>
 	);

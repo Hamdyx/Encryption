@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
-
+import { AiFillLock } from 'react-icons/ai';
 const CipherDecryption: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
 	const [inputText, setInputText] = useState('');
 	const [decryptedStr, setDecryptedStr] = useState('');
 
-	const handleTextChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleTextChange = (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const inputValue = ev.target.value;
 		setInputText(inputValue);
 	};
 	const handleKeyChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		const inputValue = parseInt(ev.target.value);
+		let inputValue = parseInt(ev.target.value);
+		inputValue = inputValue > 100 ? 100 : inputValue;
+
 		setInputKey(inputValue);
 	};
 
@@ -57,8 +59,8 @@ const CipherDecryption: React.FC = () => {
 			<div className="cipher_encryption-container">
 				<div className="cipher-input">
 					<label htmlFor="cipher_decryption-txt">Text</label>
-					<input
-						type="text"
+
+					<textarea
 						id="cipher_decryption-txt"
 						onChange={handleTextChange}
 						value={inputText}
@@ -77,9 +79,10 @@ const CipherDecryption: React.FC = () => {
 				</div>
 			</div>
 			<CustomAnimatedBtn title="Decrypt" onClick={decryptText} />
-			<div className="output-password">
-				<h3>Decrypted Text</h3>
-				<h4>{decryptedStr}</h4>
+			<div className="output-container --cipher">
+				<h3>Decrypted</h3>
+				<AiFillLock className="lock_icon" />
+				<div className="output-box --cipher">{decryptedStr}</div>
 			</div>
 		</div>
 	);
