@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
-import { AiFillLock } from 'react-icons/ai';
+import OutputWithCopy from 'components/OutputWithCopy';
 
 const PasswordGenerator: React.FC = () => {
 	const [passLen, setPassLen] = useState(6);
@@ -47,15 +47,11 @@ const PasswordGenerator: React.FC = () => {
 			</div>
 			<CustomAnimatedBtn title="Generate" onClick={generatePass} />
 
-			<div className="output-container --password">
-				<h3>Generated Password</h3>
-				<AiFillLock className="lock_icon" />
-				<div className="output-box">
-					{[...passStr].map((c: string, i: number) => (
-						<span key={i}>{c}</span>
-					))}
-				</div>
-			</div>
+			<OutputWithCopy
+				title="Generated Password"
+				outputText={passStr}
+				fieldStyle="--password"
+			/>
 		</div>
 	);
 };

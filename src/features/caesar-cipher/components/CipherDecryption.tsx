@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
-import { AiFillLock } from 'react-icons/ai';
+import OutputWithCopy from 'components/OutputWithCopy';
 const CipherDecryption: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
 	const [inputText, setInputText] = useState('');
@@ -79,11 +79,11 @@ const CipherDecryption: React.FC = () => {
 				</div>
 			</div>
 			<CustomAnimatedBtn title="Decrypt" onClick={decryptText} />
-			<div className="output-container --cipher">
-				<h3>Decrypted</h3>
-				<AiFillLock className="lock_icon" />
-				<div className="output-box --cipher">{decryptedStr}</div>
-			</div>
+			<OutputWithCopy
+				title="Decrypt"
+				outputText={decryptedStr}
+				fieldStyle="--cipher"
+			/>
 		</div>
 	);
 };
