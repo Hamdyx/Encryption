@@ -1,0 +1,20 @@
+.navbar {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	padding: 2rem;
+	a {
+		padding: 0.75rem;
+		color: #fff;
+		text-decoration: none;
+		font: normal normal 600 1.5rem/1rem normal;
+		letter-spacing: 0.25rem;
+		text-transform: uppercase;
+		&.active {
+			color: #f8b500;
+		}
+		&:hover {
+			color: #fac638;
+		}
+	}
+}
