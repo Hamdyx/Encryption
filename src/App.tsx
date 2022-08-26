@@ -1,18 +1,15 @@
 import React from 'react';
 import PasswordGenerator from './features/password-generator';
 import CaesarCipher from './features/caesar-cipher';
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from 'features/Landing';
+import Navbar from 'layout/Navbar';
 
 const App: React.FC = () => {
 	return (
 		<div className="App">
 			<BrowserRouter>
-				<nav className="navbar">
-					<NavLink to="/">Home</NavLink>
-					<NavLink to="/generator">Generator</NavLink>
-					<NavLink to="/cipher">Cipher</NavLink>
-				</nav>
+				<Navbar />
 				<Routes>
 					<Route path="/" element={<Landing />} />
 					<Route path="/generator" element={<PasswordGenerator />} />
