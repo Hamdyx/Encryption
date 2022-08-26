@@ -1,0 +1,116 @@
+.cards-container {
+	position: relative;
+	top: -60px;
+	display: flex;
+	gap: 5rem;
+	justify-content: center;
+	.feature_card {
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur(5px);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		padding: 3rem 2rem 2rem;
+		width: 380px;
+		height: 254px;
+		background: #07182e;
+		position: relative;
+		place-content: center;
+		place-items: center;
+		overflow: hidden;
+		border-radius: 20px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			width: 100px;
+			background-image: linear-gradient(180deg, #f9a826, #f9a826);
+			height: 200%;
+			animation: rotBGimg 3s linear infinite;
+			transition: all 0.2s linear;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			background: #07182e;
+			inset: 5px;
+			border-radius: 15px;
+		}
+		h2 {
+			color: #f9a826;
+			filter: drop-shadow(2px 2px 20px #f9a826);
+			z-index: 1;
+		}
+		.card_link {
+			color: #f9a826;
+			text-decoration: none;
+			text-transform: capitalize;
+			z-index: 1;
+			margin-top: auto;
+
+			border: none;
+			display: block;
+			position: relative;
+			padding: 0.7em 2.4em;
+			font-size: 18px;
+			background: transparent;
+			cursor: pointer;
+			user-select: none;
+			overflow: hidden;
+			z-index: 1;
+			font-family: inherit;
+			font-weight: 500;
+			&:active {
+				span {
+					&::before {
+						background: #f9a826;
+					}
+				}
+			}
+			&:hover {
+				color: white;
+				span {
+					&::before {
+						transform: translate(-50%, -50%) rotate(-90deg);
+						width: 100%;
+						background: #f9a826;
+					}
+				}
+			}
+			span {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: transparent;
+				z-index: -1;
+				// border: 4px solid royalblue;
+				border: 4px solid #f9a826;
+				&::before {
+					content: '';
+					display: block;
+					position: absolute;
+					width: 8%;
+					height: 500%;
+					background: #07182e;
+
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%) rotate(-60deg);
+					transition: all 0.3s;
+				}
+			}
+		}
+	}
+}
+
+@keyframes rotBGimg {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
