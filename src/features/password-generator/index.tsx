@@ -30,28 +30,30 @@ const PasswordGenerator: React.FC = () => {
 	};
 
 	return (
-		<div className="password-generator">
-			<div className="App-header">
-				<h2>Password Generator</h2>
-			</div>
-			<div className="password_length-container">
-				<label htmlFor="password_length">Password Length</label>
-				<input
-					type="number"
-					id="password_length"
-					onChange={handleChange}
-					value={passLen}
-					min={6}
-					max={16}
+		<div className="main_container">
+			<div className="feature_container">
+				<div className="App-header">
+					<h2>Password Generator</h2>
+				</div>
+				<div className="password_length-container">
+					<label htmlFor="password_length">Password Length</label>
+					<input
+						type="number"
+						id="password_length"
+						onChange={handleChange}
+						value={passLen}
+						min={6}
+						max={16}
+					/>
+				</div>
+				<CustomAnimatedBtn title="Generate" onClick={generatePass} />
+
+				<OutputWithCopy
+					title="Generated Password"
+					outputText={passStr}
+					fieldStyle="--password"
 				/>
 			</div>
-			<CustomAnimatedBtn title="Generate" onClick={generatePass} />
-
-			<OutputWithCopy
-				title="Generated Password"
-				outputText={passStr}
-				fieldStyle="--password"
-			/>
 		</div>
 	);
 };

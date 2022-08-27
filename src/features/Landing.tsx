@@ -4,7 +4,7 @@ import React from 'react';
 
 const Landing: React.FC = () => {
 	return (
-		<div className="password-generator">
+		<div className="main_container">
 			<MobileEncryption />
 			<div className="cards-container">
 				<FeatureCard title="Password Generator" path="generator" />

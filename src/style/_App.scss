@@ -12,7 +12,6 @@ html {
 		color: #000;
 		padding: 20px;
 		border-radius: 30px 200px;
-		width: 50%;
 		margin: auto;
 		background: #fceabb; /* fallback for old browsers */
 		background: -webkit-linear-gradient(
@@ -26,11 +25,24 @@ html {
 			#fceabb
 		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
+	.main_container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1rem;
+	}
+	.feature_container {
+		display: flex;
+		flex: 1;
+		gap: 1rem;
+		flex-direction: column;
+	}
 	.caesar-cipher {
 		display: flex;
-		& > div {
-			flex: 1;
-		}
+		flex-wrap: wrap;
+		column-gap: 40px;
+		row-gap: 40px;
+		padding: 1rem 1.5rem;
 	}
 	.password_length-container,
 	.cipher_encryption-container {

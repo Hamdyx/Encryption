@@ -52,7 +52,7 @@ const CipherEncryption: React.FC = () => {
 	};
 
 	return (
-		<div className="cipher-encryption">
+		<div className="feature_container">
 			<div className="App-header">
 				<h2>Caesar Cipher Encryption</h2>
 			</div>
