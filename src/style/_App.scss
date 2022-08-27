@@ -1,6 +1,3 @@
-html {
-	background-color: #222;
-}
 .App {
 	text-align: center;
 	background-color: #222;
@@ -16,13 +13,13 @@ html {
 		background: #fceabb; /* fallback for old browsers */
 		background: -webkit-linear-gradient(
 			to right,
-			#f8b500,
-			#fceabb
+			$main-color,
+			$light_main-color
 		); /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(
 			to right,
-			#f8b500,
-			#fceabb
+			$main-color,
+			$light_main-color
 		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 	.main_container {
@@ -30,6 +27,20 @@ html {
 		flex-direction: column;
 		align-items: center;
 		padding: 1rem;
+		& > svg {
+			@media (max-width: $breakpoints-tablet) {
+				width: 73vw;
+				height: 66vw;
+				min-width: 420px;
+				min-height: 380px;
+			}
+			@media (max-width: $breakpoints-mobile_lg) {
+				width: 65vw;
+				height: 58vw;
+				min-width: unset;
+				min-height: unset;
+			}
+		}
 	}
 	.feature_container {
 		display: flex;
@@ -114,7 +125,7 @@ html {
 			width: 10rem;
 			height: 10rem;
 			position: absolute;
-			color: #f8b500;
+			color: $main-color;
 			top: -25px;
 		}
 		.output-box {

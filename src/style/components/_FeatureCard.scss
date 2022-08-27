@@ -4,27 +4,38 @@
 	display: flex;
 	gap: 5rem;
 	justify-content: center;
+	padding: 1rem;
+	@media (max-width: $breakpoints-mobile_lg) {
+		top: -40px;
+	}
+	@media (max-width: $breakpoints-laptop-sm) {
+		gap: 3rem;
+		flex-wrap: wrap;
+		row-gap: 2rem;
+	}
 	.feature_card {
 		display: flex;
 		flex-direction: column;
-		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		box-shadow: 0 8px 32px 0 #1f26875e;
 		backdrop-filter: blur(5px);
-		border: 1px solid rgba(255, 255, 255, 0.18);
+		border: 1px solid #ffffff2e;
 		padding: 3rem 2rem 2rem;
 		width: 380px;
 		height: 254px;
-		background: #07182e;
+		background: $sub-color;
 		position: relative;
 		place-content: center;
 		place-items: center;
 		overflow: hidden;
 		border-radius: 20px;
-
+		@media (max-width: $breakpoints-mobile_lg) {
+			width: 275px;
+		}
 		&:before {
 			content: '';
 			position: absolute;
 			width: 100px;
-			background-image: linear-gradient(180deg, #f9a826, #f9a826);
+			background-image: linear-gradient(180deg, $main-color, $main-color);
 			height: 200%;
 			animation: rotBGimg 3s linear infinite;
 			transition: all 0.2s linear;
@@ -37,12 +48,12 @@
 			border-radius: 15px;
 		}
 		h2 {
-			color: #f9a826;
-			filter: drop-shadow(2px 2px 20px #f9a826);
+			color: $main-color;
+			filter: drop-shadow(2px 2px 20px $main-color);
 			z-index: 1;
 		}
 		.card_link {
-			color: #f9a826;
+			color: $main-color;
 			text-decoration: none;
 			text-transform: capitalize;
 			z-index: 1;
@@ -63,7 +74,7 @@
 			&:active {
 				span {
 					&::before {
-						background: #f9a826;
+						background: $main-color;
 					}
 				}
 			}
@@ -73,7 +84,7 @@
 					&::before {
 						transform: translate(-50%, -50%) rotate(-90deg);
 						width: 100%;
-						background: #f9a826;
+						background: $main-color;
 					}
 				}
 			}
@@ -85,8 +96,7 @@
 				height: 100%;
 				background: transparent;
 				z-index: -1;
-				// border: 4px solid royalblue;
-				border: 4px solid #f9a826;
+				border: 4px solid $main-color;
 				&::before {
 					content: '';
 					display: block;
@@ -94,7 +104,6 @@
 					width: 8%;
 					height: 500%;
 					background: #07182e;
-
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%, -50%) rotate(-60deg);
