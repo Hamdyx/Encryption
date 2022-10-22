@@ -71,41 +71,22 @@
 		label {
 			font-size: 1.5rem;
 		}
-		textarea,
-		input {
-			background: #7d7d7d;
-			border: 1px solid #ffffff2e;
-			border-radius: 8px;
-			font-size: 1.5rem;
-			padding: 0.5rem;
-			color: #fff;
-		}
 		textarea {
-			width: 40vw;
-
 			resize: vertical;
 		}
-
 		input {
 			width: 100px;
 			text-align: center;
 
 			&::-webkit-outer-spin-button,
 			&::-webkit-inner-spin-button {
-				-webkit-appearance: none;
 				margin: 0;
-			}
-
-			/* Firefox */
-			&[type='number'] {
-				-moz-appearance: textfield;
 			}
 		}
 	}
 	.password_length-container {
 		flex-direction: column;
 	}
-
 	.output-container {
 		display: flex;
 		flex-direction: column;
@@ -132,6 +113,7 @@
 			padding: 1rem;
 			padding-inline-end: 50px;
 			position: relative;
+			top: 20px;
 			font-size: 1.5rem;
 			font-weight: 700;
 			min-height: 70px;
