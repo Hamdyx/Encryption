@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
 import OutputWithCopy from 'components/OutputWithCopy';
+import AnimatedInput from 'components/AnimatedInput';
 
 const CipherEncryption: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
@@ -58,27 +59,25 @@ const CipherEncryption: React.FC = () => {
 			</div>
 			<div className="cipher_encryption-container">
 				<div className="cipher-input">
-					<label htmlFor="cipher_encryption">Text</label>
-					<textarea
-						id="cipher_encryption"
-						onChange={handleTextChange}
+					<AnimatedInput
+						handleChange={handleTextChange}
 						value={inputText}
+						type="textarea"
 					/>
 				</div>
 				<div className="cipher-input">
-					<label htmlFor="cipher_encryption">Key</label>
-					<input
-						type="number"
-						id="cipher_encryption"
-						onChange={handleKeyChange}
+					<AnimatedInput
+						handleChange={handleKeyChange}
 						value={inputKey}
+						label="key"
+						type="number"
 						min={1}
 						max={10}
 					/>
 				</div>
 			</div>
 			<CustomAnimatedBtn title="Encrypt" onClick={encryptText} />
-			<OutputWithCopy title="Encrypted" outputText={encryptedStr} />
+			<OutputWithCopy outputText={encryptedStr} />
 		</div>
 	);
 };

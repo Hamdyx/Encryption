@@ -71,21 +71,9 @@
 		label {
 			font-size: 1.5rem;
 		}
-		textarea,
-		input {
-			background: #7d7d7d;
-			border: 1px solid #ffffff2e;
-			border-radius: 8px;
-			font-size: 1.5rem;
-			padding: 0.5rem;
-			color: #fff;
-		}
 		textarea {
-			width: 40vw;
-
 			resize: vertical;
 		}
-
 		input {
 			width: 100px;
 			text-align: center;
@@ -99,7 +87,6 @@
 	.password_length-container {
 		flex-direction: column;
 	}
-
 	.output-container {
 		display: flex;
 		flex-direction: column;

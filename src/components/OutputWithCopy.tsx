@@ -3,13 +3,12 @@ import { AiFillLock } from 'react-icons/ai';
 import { MdContentCopy } from 'react-icons/md';
 
 const OutputWithCopy: React.FC<{
-	title: string;
 	outputText: string;
 	fieldStyle?: string;
-}> = ({ title, outputText, fieldStyle }) => {
+}> = ({ outputText, fieldStyle }) => {
 	const tooltipRef = useRef<HTMLSpanElement>(null);
 
-	const handleCopyOutput = (ev: any) => {
+	const handleCopyOutput = () => {
 		window.navigator.clipboard.writeText(outputText);
 		tooltipRef?.current?.classList.add('--show');
 		setTimeout(() => tooltipRef?.current?.classList.remove('--show'), 1000);
@@ -17,7 +16,6 @@ const OutputWithCopy: React.FC<{
 
 	return (
 		<div className={`output-container`}>
-			{/* <h3>{title}</h3> */}
 			<AiFillLock className="lock_icon" />
 			<div className={`output-box ${fieldStyle ?? ''}`}>
 				<div className="copy_container">

@@ -48,11 +48,7 @@ const PasswordGenerator: React.FC = () => {
 				</div>
 				<CustomAnimatedBtn title="Generate" onClick={generatePass} />
 
-				<OutputWithCopy
-					title="Generated Password"
-					outputText={passStr}
-					fieldStyle="--password"
-				/>
+				<OutputWithCopy outputText={passStr} fieldStyle="--password" />
 			</div>
 		</div>
 	);
