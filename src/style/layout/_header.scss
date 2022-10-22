@@ -42,7 +42,7 @@ $--fs-size: 1.5em;
 		&.active {
 			.hover-text {
 				width: 100%;
-				filter: drop-shadow(0 0 23px $--animation-color);
+				filter: drop-shadow(0 0 10px $--animation-color);
 			}
 		}
 		.hover-text {

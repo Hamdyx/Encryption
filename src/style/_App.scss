@@ -92,13 +92,7 @@
 
 			&::-webkit-outer-spin-button,
 			&::-webkit-inner-spin-button {
-				-webkit-appearance: none;
 				margin: 0;
-			}
-
-			/* Firefox */
-			&[type='number'] {
-				-moz-appearance: textfield;
 			}
 		}
 	}
@@ -132,6 +126,7 @@
 			padding: 1rem;
 			padding-inline-end: 50px;
 			position: relative;
+			top: 20px;
 			font-size: 1.5rem;
 			font-weight: 700;
 			min-height: 70px;

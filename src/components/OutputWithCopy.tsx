@@ -17,7 +17,7 @@ const OutputWithCopy: React.FC<{
 
 	return (
 		<div className={`output-container`}>
-			<h3>{title}</h3>
+			{/* <h3>{title}</h3> */}
 			<AiFillLock className="lock_icon" />
 			<div className={`output-box ${fieldStyle ?? ''}`}>
 				<div className="copy_container">

@@ -49,7 +49,7 @@
 		}
 		h2 {
 			color: $main-color;
-			filter: drop-shadow(2px 2px 20px $main-color);
+			filter: drop-shadow(2px 2px 5px $main-color);
 			z-index: 1;
 		}
 		.card_link {
@@ -71,6 +71,8 @@
 			z-index: 1;
 			font-family: inherit;
 			font-weight: 500;
+			border-radius: 10px;
+
 			&:active {
 				span {
 					&::before {
