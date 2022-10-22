@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
 import OutputWithCopy from 'components/OutputWithCopy';
+import AnimatedInput from 'components/AnimatedInput';
 
 const PasswordGenerator: React.FC = () => {
 	const [passLen, setPassLen] = useState(6);
 	const [passStr, setPassStr] = useState('');
 
 	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		let inputLen = parseInt(ev.target.value);
+		let inputLen = parseInt(ev?.target?.value || '1');
 		inputLen = inputLen > 32 ? 32 : inputLen;
 		setPassLen(inputLen);
 	};
@@ -36,14 +37,13 @@ const PasswordGenerator: React.FC = () => {
 					<h2>Password Generator</h2>
 				</div>
 				<div className="password_length-container">
-					<label htmlFor="password_length">Password Length</label>
-					<input
-						type="number"
-						id="password_length"
-						onChange={handleChange}
+					<AnimatedInput
+						handleChange={handleChange}
 						value={passLen}
-						min={6}
-						max={16}
+						label="length"
+						type="number"
+						min={1}
+						max={10}
 					/>
 				</div>
 				<CustomAnimatedBtn title="Generate" onClick={generatePass} />

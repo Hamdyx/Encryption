@@ -13,7 +13,7 @@ const CipherEncryption: React.FC = () => {
 		setInputText(inputValue);
 	};
 	const handleKeyChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		let inputValue = parseInt(ev.target.value);
+		let inputValue = parseInt(ev?.target?.value || '1');
 		inputValue = inputValue > 100 ? 100 : inputValue;
 		setInputKey(inputValue);
 	};
