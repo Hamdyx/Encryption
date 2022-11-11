@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
 import OutputWithCopy from 'components/OutputWithCopy';
 import AnimatedInput from 'components/AnimatedInput';
@@ -29,6 +29,9 @@ const PasswordGenerator: React.FC = () => {
 		}
 		setPassStr(passArr.join(''));
 	};
+	useEffect(() => {
+		document.title = 'Password Generator';
+	}, []);
 
 	return (
 		<div className="main_container">
