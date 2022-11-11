@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
 import OutputWithCopy from 'components/OutputWithCopy';
 import AnimatedInput from 'components/AnimatedInput';
+import ReactGA from 'react-ga4';
+
 const CipherDecryption: React.FC = () => {
 	const [inputKey, setInputKey] = useState(1);
 	const [inputText, setInputText] = useState('');
@@ -50,6 +52,10 @@ const CipherDecryption: React.FC = () => {
 		}
 		const tmp = _encrypted.join('');
 		setDecryptedStr(tmp);
+		ReactGA.event({
+			category: 'Caesar Cipher',
+			action: 'Cipher Decryption',
+		});
 	};
 
 	return (

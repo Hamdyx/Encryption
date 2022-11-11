@@ -7,8 +7,7 @@ import Landing from 'features/Landing';
 import Navbar from 'layout/Navbar';
 
 ReactGA.initialize('G-X2PB7T3DP0');
-ReactGA.send('pageview');
-
+// ReactGA.send('pageview');
 const App: React.FC = () => {
 	return (
 		<div className="App">

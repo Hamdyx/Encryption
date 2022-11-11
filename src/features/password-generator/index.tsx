@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
 import OutputWithCopy from 'components/OutputWithCopy';
 import AnimatedInput from 'components/AnimatedInput';
+import ReactGA from 'react-ga4';
 
 const PasswordGenerator: React.FC = () => {
 	const [passLen, setPassLen] = useState(6);
@@ -28,6 +29,10 @@ const PasswordGenerator: React.FC = () => {
 			passArr[i] = randChar;
 		}
 		setPassStr(passArr.join(''));
+		ReactGA.event({
+			category: 'Password',
+			action: 'Generate Pass',
+		});
 	};
 	useEffect(() => {
 		document.title = 'Password Generator';
