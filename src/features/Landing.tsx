@@ -1,8 +1,12 @@
+import React, { useEffect } from 'react';
 import { MobileEncryption } from 'assets/icons';
 import FeatureCard from 'components/FeatureCard';
-import React from 'react';
 
 const Landing: React.FC = () => {
+	useEffect(() => {
+		document.title = 'Encryption App';
+	}, []);
+
 	return (
 		<div className="main_container">
 			<MobileEncryption />
