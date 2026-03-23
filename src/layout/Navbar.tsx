@@ -1,7 +1,8 @@
-import React from 'react';
+import type { FunctionComponent } from 'react';
+
 import { NavLink } from 'react-router-dom';
 
-const Navbar: React.FC = () => {
+const Navbar: FunctionComponent = () => {
 	return (
 		<nav className="navbar">
 			<CustomLink path="" title="Home" />
@@ -11,7 +12,7 @@ const Navbar: React.FC = () => {
 	);
 };
 
-const CustomLink: React.FC<{ path: string; title: string }> = ({
+const CustomLink: FunctionComponent<{ path: string; title: string }> = ({
 	path,
 	title,
 }) => {

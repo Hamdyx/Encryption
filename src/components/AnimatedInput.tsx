@@ -1,16 +1,18 @@
-import React from 'react';
+import type { FunctionComponent } from 'react';
 
 interface Props {
-	handleChange: any;
-	value: any;
-	label?: any;
-	type?: any;
+	handleOnChange: (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => void;
+	value: number | string;
+	label?: string;
+	type?: 'text' | 'number' | 'textarea';
 	min?: number;
 	max?: number;
 }
 
-const AnimatedInput: React.FC<Props> = ({
-	handleChange,
+const AnimatedInput: FunctionComponent<Props> = ({
+	handleOnChange,
 	value,
 	label = 'text',
 	type = 'text',
@@ -22,6 +24,7 @@ const AnimatedInput: React.FC<Props> = ({
 			{el}
 		</span>
 	));
+
 	let InputWrapper;
 	switch (type) {
 		case 'textarea':
@@ -29,7 +32,7 @@ const AnimatedInput: React.FC<Props> = ({
 				<textarea
 					placeholder=" "
 					value={value}
-					onChange={handleChange}
+					onChange={handleOnChange}
 					required
 				/>
 			);
@@ -39,7 +42,7 @@ const AnimatedInput: React.FC<Props> = ({
 				<input
 					type="number"
 					value={value}
-					onChange={handleChange}
+					onChange={handleOnChange}
 					min={min}
 					max={max}
 					required
@@ -48,9 +51,12 @@ const AnimatedInput: React.FC<Props> = ({
 			break;
 
 		default:
-			<input type="text" value={value} onChange={handleChange} />;
+			InputWrapper = (
+				<input type="text" value={value} onChange={handleOnChange} />
+			);
 			break;
 	}
+
 	return (
 		<div className="animated_input">
 			{InputWrapper}

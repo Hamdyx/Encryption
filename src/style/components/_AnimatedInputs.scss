@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .animated_input {
 	position: relative;
 	margin: 20px 0 40px;
@@ -44,6 +46,7 @@
 	}
 }
 .custom_animated-btn {
+	cursor: pointer;
 	text-transform: capitalize;
 	margin: auto;
 	font-family: inherit;
@@ -97,10 +100,10 @@
 
 @keyframes rollover {
 	from {
-		transform: translateX(1em) rotate(0deg) scale(1);
+		transform: rotate(0deg);
 	}
 
 	to {
-		transform: translateX(4em) rotate(360deg) scale(1.25);
+		transform: rotate(360deg);
 	}
 }

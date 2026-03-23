@@ -1,11 +1,11 @@
 //* abstracts
-@import 'abstracts/variables';
+@use 'abstracts/variables';
 //* base
-@import 'base/reset';
+@use 'base/reset';
 //* layout
-@import 'layout/header';
+@use 'layout/header';
 //* components
-@import 'components/AnimatedInputs';
-@import 'components/FeatureCard';
+@use 'components/AnimatedInputs';
+@use 'components/FeatureCard';
 
-@import 'App';
+@use 'App';
