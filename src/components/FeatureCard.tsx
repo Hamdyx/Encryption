@@ -1,9 +1,7 @@
+import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const FeatureCard: React.FC<{ title: string; path: string }> = ({
-	title,
-	path,
-}) => {
+const FeatureCard: FC<{ title: string; path: string }> = ({ title, path }) => {
 	return (
 		<div className="feature_card">
 			<h2>{title}</h2>
