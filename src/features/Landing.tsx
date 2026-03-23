@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import type { FunctionComponent } from 'react';
+
+import { useEffect } from 'react';
+
 import { MobileEncryption } from 'assets/icons';
 import FeatureCard from 'components/FeatureCard';
 
-const Landing: React.FC = () => {
+const Landing: FunctionComponent = () => {
 	useEffect(() => {
 		document.title = 'Encryption App';
 	}, []);

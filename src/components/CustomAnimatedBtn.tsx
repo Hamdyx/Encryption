@@ -1,10 +1,18 @@
-import React from 'react';
+import type { FunctionComponent } from 'react';
+
 import { AiFillSetting } from 'react-icons/ai';
-const CustomAnimatedBtn: React.FC<{ title: string; onClick: () => void }> = (
-	props
-) => {
+
+interface Props {
+	title: string;
+	onButtonClick: () => void;
+}
+
+const CustomAnimatedBtn: FunctionComponent<Props> = ({
+	title,
+	onButtonClick,
+}) => {
 	return (
-		<button className="custom_animated-btn" onClick={props.onClick}>
+		<button className="custom_animated-btn" onClick={onButtonClick}>
 			<div className="svg-wrapper-1">
 				<div className="svg-wrapper">
 					<svg viewBox="0 0 24 24" width="24" height="24">
@@ -12,7 +20,7 @@ const CustomAnimatedBtn: React.FC<{ title: string; onClick: () => void }> = (
 					</svg>
 				</div>
 			</div>
-			<span>{props.title}</span>
+			<span>{title}</span>
 		</button>
 	);
 };

@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import CustomAnimatedBtn from '../../components/CustomAnimatedBtn';
-import OutputWithCopy from 'components/OutputWithCopy';
-import AnimatedInput from 'components/AnimatedInput';
+import type { FunctionComponent } from 'react';
+
+import { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
 
-const PasswordGenerator: React.FC = () => {
+import AnimatedInput from 'components/AnimatedInput';
+import CustomAnimatedBtn from 'components/CustomAnimatedBtn';
+import OutputWithCopy from 'components/OutputWithCopy';
+
+const PasswordGenerator: FunctionComponent = () => {
 	const [passLen, setPassLen] = useState(6);
 	const [passStr, setPassStr] = useState('');
 
-	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		let inputLen = parseInt(ev?.target?.value || '1');
-		inputLen = inputLen > 32 ? 32 : inputLen;
+	const handleChange = (
+		ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		let inputLen = Number.parseInt(ev?.target?.value || '1');
+		inputLen = Math.min(inputLen, 32);
 		setPassLen(inputLen);
 	};
-	const generatePass = () => {
+
+	const onGeneratePass = () => {
 		//* symbol => 33 | symbol => 47
 		//* number => 48 | number => 57
 		//* symbol => 58 | symbol => 64
@@ -21,11 +27,11 @@ const PasswordGenerator: React.FC = () => {
 		//* symbol => 91 | symbol => 96
 		//* a => 97 | z => 122
 		//* symbol => 123 | symbol => 126
-		const passArr = Array(passLen);
+		const passArr = new Array(passLen);
 		for (let i = 0; i < passArr.length; i++) {
 			const randNumber = Math.random() * 93; //* 126 - 33
 			const randCode = Math.floor(randNumber) + 33;
-			const randChar = String.fromCharCode(randCode);
+			const randChar = String.fromCodePoint(randCode);
 			passArr[i] = randChar;
 		}
 		setPassStr(passArr.join(''));
@@ -34,6 +40,7 @@ const PasswordGenerator: React.FC = () => {
 			action: 'Generate Pass',
 		});
 	};
+
 	useEffect(() => {
 		document.title = 'Password Generator';
 	}, []);
@@ -46,7 +53,7 @@ const PasswordGenerator: React.FC = () => {
 				</div>
 				<div className="password_length-container">
 					<AnimatedInput
-						handleChange={handleChange}
+						handleOnChange={handleChange}
 						value={passLen}
 						label="length"
 						type="number"
@@ -54,7 +61,10 @@ const PasswordGenerator: React.FC = () => {
 						max={10}
 					/>
 				</div>
-				<CustomAnimatedBtn title="Generate" onClick={generatePass} />
+				<CustomAnimatedBtn
+					title="Generate"
+					onButtonClick={onGeneratePass}
+				/>
 
 				<OutputWithCopy outputText={passStr} fieldStyle="--password" />
 			</div>

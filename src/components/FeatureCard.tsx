@@ -1,7 +1,13 @@
-import type { FC } from 'react';
+import type { FunctionComponent } from 'react';
+
 import { NavLink } from 'react-router-dom';
 
-const FeatureCard: FC<{ title: string; path: string }> = ({ title, path }) => {
+interface Props {
+	title: string;
+	path: string;
+}
+
+const FeatureCard: FunctionComponent<Props> = ({ title, path }) => {
 	return (
 		<div className="feature_card">
 			<h2>{title}</h2>

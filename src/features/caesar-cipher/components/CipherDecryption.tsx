@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
-import CustomAnimatedBtn from '../../../components/CustomAnimatedBtn';
-import OutputWithCopy from 'components/OutputWithCopy';
-import AnimatedInput from 'components/AnimatedInput';
+import type { FunctionComponent } from 'react';
+
+import { useState } from 'react';
 import ReactGA from 'react-ga4';
 
-const CipherDecryption: React.FC = () => {
+import AnimatedInput from 'components/AnimatedInput';
+import CustomAnimatedBtn from 'components/CustomAnimatedBtn';
+import OutputWithCopy from 'components/OutputWithCopy';
+
+const CipherDecryption: FunctionComponent = () => {
 	const [inputKey, setInputKey] = useState(1);
 	const [inputText, setInputText] = useState('');
 	const [decryptedStr, setDecryptedStr] = useState('');
 
-	const handleTextChange = (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
-		const inputValue = ev.target.value;
+	const handleTextChange = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		const inputValue = event.target.value;
 		setInputText(inputValue);
 	};
-	const handleKeyChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		let inputValue = parseInt(ev?.target?.value || '1');
-		inputValue = inputValue > 100 ? 100 : inputValue;
+
+	const handleKeyChange = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		let inputValue = Number.parseInt(event?.target?.value || '1');
+		inputValue = Math.min(inputValue, 100);
 
 		setInputKey(inputValue);
 	};
@@ -24,23 +32,23 @@ const CipherDecryption: React.FC = () => {
 	const upperCaseReg = /[A-Z]/;
 	const decryptUpperCase = (letter: string) => {
 		//* A => 65 | Z => 90
-		let dec = letter.charCodeAt(0);
+		let dec = letter.codePointAt(0)!;
 		dec -= inputKey;
 		while (dec < 65) dec = 91 - (65 - dec);
 
-		return String.fromCharCode(dec);
+		return String.fromCodePoint(dec);
 	};
 	const decryptLowerCase = (letter: string) => {
 		//* a => 97 | z => 122
-		let dec = letter.charCodeAt(0);
+		let dec = letter.codePointAt(0)!;
 		dec -= inputKey;
 		while (dec < 97) dec = 123 - (97 - dec);
 
-		return String.fromCharCode(dec);
+		return String.fromCodePoint(dec);
 	};
 
-	const decryptText = () => {
-		const _encrypted: string[] = Array(inputText.length);
+	const onDecryptText = () => {
+		const _encrypted: string[] = new Array(inputText.length);
 		for (let i = 0; i < inputText.length; i++) {
 			if (lowerCaseReg.test(inputText[i])) {
 				_encrypted[i] = decryptLowerCase(inputText[i]);
@@ -66,14 +74,14 @@ const CipherDecryption: React.FC = () => {
 			<div className="cipher_encryption-container">
 				<div className="cipher-input">
 					<AnimatedInput
-						handleChange={handleTextChange}
+						handleOnChange={handleTextChange}
 						value={inputText}
 						type="textarea"
 					/>
 				</div>
 				<div className="cipher-input">
 					<AnimatedInput
-						handleChange={handleKeyChange}
+						handleOnChange={handleKeyChange}
 						value={inputKey}
 						label="key"
 						type="number"
@@ -82,7 +90,7 @@ const CipherDecryption: React.FC = () => {
 					/>
 				</div>
 			</div>
-			<CustomAnimatedBtn title="Decrypt" onClick={decryptText} />
+			<CustomAnimatedBtn title="Decrypt" onButtonClick={onDecryptText} />
 			<OutputWithCopy outputText={decryptedStr} fieldStyle="--cipher" />
 		</div>
 	);

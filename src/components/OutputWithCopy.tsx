@@ -1,16 +1,23 @@
-import React, { useRef } from 'react';
+import type { FunctionComponent } from 'react';
+
+import { useRef } from 'react';
+import ReactGA from 'react-ga4';
 import { AiFillLock } from 'react-icons/ai';
 import { MdContentCopy } from 'react-icons/md';
-import ReactGA from 'react-ga4';
 
-const OutputWithCopy: React.FC<{
+interface Props {
 	outputText: string;
 	fieldStyle?: string;
-}> = ({ outputText, fieldStyle }) => {
+}
+
+const OutputWithCopy: FunctionComponent<Props> = ({
+	outputText,
+	fieldStyle,
+}) => {
 	const tooltipRef = useRef<HTMLSpanElement>(null);
 
 	const handleCopyOutput = () => {
-		window.navigator.clipboard.writeText(outputText);
+		globalThis.navigator.clipboard.writeText(outputText);
 		tooltipRef?.current?.classList.add('--show');
 		setTimeout(() => tooltipRef?.current?.classList.remove('--show'), 1000);
 		ReactGA.event({
