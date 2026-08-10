@@ -3,6 +3,7 @@ import type { FunctionComponent } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Landing from 'features/Landing';
+import NotFound from 'features/NotFound';
 import Navbar from 'layout/Navbar';
 
 import CaesarCipher from './features/caesar-cipher';
@@ -17,6 +18,7 @@ const App: FunctionComponent = () => {
 					<Route path="/" element={<Landing />} />
 					<Route path="/generator" element={<PasswordGenerator />} />
 					<Route path="/cipher" element={<CaesarCipher />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
