@@ -5,7 +5,12 @@ export const MobileEncryption = () => (
 		height="512.2962"
 		viewBox="0 0 564.98435 512.2962"
 		xmlnsXlink="http://www.w3.org/1999/xlink"
+		role="img"
+		aria-labelledby="mobile-encryption-title"
 	>
+		<title id="mobile-encryption-title">
+			A phone protected by a padlock, illustrating mobile encryption
+		</title>
 		<g>
 			<path
 				d="M390.42662,511.00598H230.11441c-24.04481,0-43.60692-19.5621-43.60692-43.60736V43.60692c0-24.04481,19.56212-43.60692,43.60692-43.60692h160.31224c24.04437,0,43.60645,19.56211,43.60645,43.60691,2.98416,170.18169,8.073,360.75835,0,423.79168,0,24.04529-19.56207,43.60736-43.60645,43.60736l-.00003,.00003Z"

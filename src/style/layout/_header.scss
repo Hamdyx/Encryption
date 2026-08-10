@@ -50,7 +50,6 @@ $--fs-size: 1.5em;
 		.hover-text {
 			position: absolute;
 			box-sizing: border-box;
-			content: attr(data-text);
 			color: $--animation-color;
 			width: 0%;
 			inset: 0;

@@ -30,7 +30,7 @@ const PasswordGenerator: FunctionComponent = () => {
 		<div className="main_container">
 			<div className="feature_container">
 				<div className="App-header">
-					<h2>Password Generator</h2>
+					<h1>Password Generator</h1>
 				</div>
 				<div className="password_length-container">
 					<AnimatedInput
@@ -47,7 +47,11 @@ const PasswordGenerator: FunctionComponent = () => {
 					onButtonClick={onGeneratePass}
 				/>
 
-				<OutputWithCopy outputText={passStr} fieldStyle="--password" />
+				<OutputWithCopy
+					outputText={passStr}
+					label="Generated password"
+					fieldStyle="--password"
+				/>
 			</div>
 		</div>
 	);

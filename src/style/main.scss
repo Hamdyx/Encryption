@@ -2,6 +2,7 @@
 @use 'abstracts/variables';
 //* base
 @use 'base/reset';
+@use 'base/utilities';
 //* layout
 @use 'layout/header';
 //* components

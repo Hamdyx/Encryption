@@ -4,11 +4,14 @@
 	position: relative;
 	margin: 20px 0 40px;
 
-	textArea {
-		width: 40vw;
+	textarea {
+		//* fluid, but never narrower than a usable line nor wider than the
+		//* half-width column the two cipher panels get on a large screen
+		width: clamp(16rem, 40vw, 34rem);
+		max-width: calc(100vw - 4rem);
 	}
 	input,
-	textArea {
+	textarea {
 		background-color: transparent;
 		border: 0;
 		border-bottom: 2px #fff solid;
@@ -16,16 +19,16 @@
 		padding: 15px 0;
 		font-size: 1.5rem;
 		color: #fff;
-		&:valid,
+		//* :placeholder-shown rather than :valid, so a number that is briefly
+		//* outside its min/max keeps the label floated instead of dropping it
+		//* back on top of the value
+		&:not(:placeholder-shown),
 		&:focus {
-			outline: 0;
 			border-bottom-color: $main-color;
-			& + label {
-				span {
-					color: $main-color;
-					filter: drop-shadow(0 0 5px $main-color);
-					transform: translateY(-50px);
-				}
+			& + label .label_chars span {
+				color: $main-color;
+				filter: drop-shadow(0 0 5px $main-color);
+				transform: translateY(-50px);
 			}
 		}
 	}
@@ -34,12 +37,12 @@
 		top: 15px;
 		left: 0;
 		pointer-events: none;
-		span {
+		.label_chars span {
 			display: inline-block;
 			min-width: 5px;
 			color: #fff;
 			transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-			&:nth-child(1) {
+			&:first-child {
 				text-transform: capitalize;
 			}
 		}
@@ -61,10 +64,13 @@
 	border-radius: 16px;
 	overflow: hidden;
 	transition: all 0.2s;
-	span {
+	.svg-wrapper {
+		display: flex;
+	}
+	.btn_label {
 		display: block;
 		margin-left: 0.3em;
-		transition: all 0.3s ease-in-out;
+		transition: transform 0.3s ease-in-out;
 	}
 	svg {
 		display: block;
@@ -79,8 +85,10 @@
 			}
 		}
 
-		span {
-			transform: translateX(5.125em);
+		.btn_label {
+			//* the label's own width plus the button's end padding: slides
+			//* fully out of view whatever the title is
+			transform: translateX(calc(100% + 1em));
 		}
 	}
 	&:active {

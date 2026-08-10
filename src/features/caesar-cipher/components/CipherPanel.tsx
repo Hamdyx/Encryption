@@ -1,6 +1,6 @@
 import type { FunctionComponent } from 'react';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 import AnimatedInput from 'components/AnimatedInput';
 import CustomAnimatedBtn from 'components/CustomAnimatedBtn';
@@ -16,6 +16,7 @@ export const MIN_KEY = 1;
 export const MAX_KEY = 26;
 
 const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
+	const headingId = useId();
 	const [rawKey, setRawKey] = useState('1');
 	const [inputText, setInputText] = useState('');
 	const [outputStr, setOutputStr] = useState('');
@@ -46,17 +47,24 @@ const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 			? 'Caesar Cipher Encryption'
 			: 'Caesar Cipher Decryption';
 	const actionTitle = mode === 'encrypt' ? 'Encrypt' : 'Decrypt';
+	//* both panels sit on the same page, so names are mode-specific where the
+	//* field is wide enough for them; the narrow key input keeps its short
+	//* label and is disambiguated by the panel's own accessible name
+	const textLabel = `text to ${mode}`;
+	const outputLabel =
+		mode === 'encrypt' ? 'Encrypted text' : 'Decrypted text';
 
 	return (
-		<div className="feature_container">
+		<section className="feature_container" aria-labelledby={headingId}>
 			<div className="App-header">
-				<h2>{heading}</h2>
+				<h2 id={headingId}>{heading}</h2>
 			</div>
 			<div className="cipher_encryption-container">
 				<div className="cipher-input">
 					<AnimatedInput
 						handleOnChange={handleTextChange}
 						value={inputText}
+						label={textLabel}
 						type="textarea"
 					/>
 				</div>
@@ -75,8 +83,12 @@ const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 				title={actionTitle}
 				onButtonClick={onTransformText}
 			/>
-			<OutputWithCopy outputText={outputStr} fieldStyle="--cipher" />
-		</div>
+			<OutputWithCopy
+				outputText={outputStr}
+				label={outputLabel}
+				fieldStyle="--cipher"
+			/>
+		</section>
 	);
 };
 

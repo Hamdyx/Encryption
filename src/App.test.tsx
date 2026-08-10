@@ -19,6 +19,13 @@ describe('App', () => {
 		).toBeInTheDocument();
 	});
 
+	it('renders route content inside a main landmark with a single h1', () => {
+		render(<App />);
+
+		expect(screen.getByRole('main')).toBeInTheDocument();
+		expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
+	});
+
 	it('renders NotFound with a link home on unknown routes', () => {
 		window.history.pushState({}, '', '/does-not-exist');
 		render(<App />);

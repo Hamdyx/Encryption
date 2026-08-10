@@ -12,17 +12,12 @@
 		padding: 20px;
 		border-radius: 30px 200px;
 		margin: auto;
-		background: #fceabb; /* fallback for old browsers */
-		background: -webkit-linear-gradient(
-			to right,
-			$main-color,
-			$light_main-color
-		); /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(
-			to right,
-			$main-color,
-			$light_main-color
-		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: $light_main-color; /* fallback for old browsers */
+		background: linear-gradient(to right, $main-color, $light_main-color);
+		h1 {
+			//* page titles are h1 but keep the h2 size this banner was built for
+			font-size: 1.5rem;
+		}
 	}
 	.main_container {
 		display: flex;
@@ -86,24 +81,12 @@
 			}
 		}
 	}
-	.password_length-container {
-		flex-direction: column;
-	}
 	.output-container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		margin: 1rem 0;
 		position: relative;
-		h3 {
-			font-size: 1.5rem;
-			font-weight: 700;
-			letter-spacing: 0.25rem;
-			word-spacing: 0.5rem;
-			text-transform: uppercase;
-			filter: drop-shadow(2px 2px 15px black);
-			z-index: 2;
-		}
 		.lock_icon {
 			width: 10rem;
 			height: 10rem;
@@ -121,6 +104,10 @@
 			min-height: 70px;
 			min-width: 250px;
 			max-width: 85vw;
+			//* long output (a 32-character password, a pasted paragraph) has to
+			//* wrap inside the box instead of pushing past it
+			overflow-wrap: anywhere;
+			white-space: pre-wrap;
 			background: #ffffff40;
 			box-shadow: 0 4px 16px 0 #1f26875e;
 			backdrop-filter: blur(10px);
@@ -129,10 +116,10 @@
 			letter-spacing: 0.125rem;
 			filter: drop-shadow(2px 4px 6px black);
 			&.--password {
-				letter-spacing: 1rem;
+				letter-spacing: clamp(0.25rem, 1.5vw, 1rem);
 			}
 			&.--cipher {
-				max-width: 40vw;
+				max-width: min(34rem, 100%);
 			}
 
 			.copy_button {
@@ -153,7 +140,10 @@
 				padding: 1rem;
 				border-radius: 8px;
 				position: absolute;
-				inset-inline-end: -100px;
+				//* stays tucked against the box: at -100px the tooltip pushed
+				//* past the viewport (and forced a horizontal scrollbar) on
+				//* phone and tablet widths
+				inset-inline-end: -10px;
 				top: -50px;
 				display: none;
 				transition: all 1s;
@@ -171,8 +161,10 @@
 						content: '';
 						position: absolute;
 						top: 98%;
-						left: 15%;
-						margin-left: -8px;
+						//* keeps the tail pointing at the copy button, which
+						//* sits 10px in from the box edge
+						inset-inline-end: 32px;
+						margin-inline-end: -8px;
 						width: 0;
 						height: 0;
 						border-top: 28px solid #919191;

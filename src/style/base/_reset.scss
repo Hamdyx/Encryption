@@ -1,7 +1,14 @@
+@use '../abstracts/variables' as *;
+
 *,
 ::after,
 ::before {
 	box-sizing: border-box;
+}
+:root {
+	//* the app is dark-only: keep native widgets (number spinners,
+	//* scrollbars, focus rings) rendering against a dark background
+	color-scheme: dark;
 }
 html {
 	background-color: #222;
@@ -18,4 +25,8 @@ h4,
 h5,
 h6 {
 	margin: 0;
+}
+:focus-visible {
+	outline: 3px solid $main-color;
+	outline-offset: 3px;
 }

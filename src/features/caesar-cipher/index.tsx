@@ -11,6 +11,7 @@ const CaesarCipher: FunctionComponent = () => {
 
 	return (
 		<div className="caesar-cipher">
+			<h1 className="visually-hidden">Caesar Cipher</h1>
 			<CipherPanel mode="encrypt" />
 			<CipherPanel mode="decrypt" />
 		</div>
