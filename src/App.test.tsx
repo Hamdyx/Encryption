@@ -26,12 +26,12 @@ describe('App', () => {
 		expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
 	});
 
-	it('renders NotFound with a link home on unknown routes', () => {
+	it('renders NotFound with a link home on unknown routes', async () => {
 		window.history.pushState({}, '', '/does-not-exist');
 		render(<App />);
 
 		expect(
-			screen.getByRole('heading', { name: 'Page Not Found' })
+			await screen.findByRole('heading', { name: 'Page Not Found' })
 		).toBeInTheDocument();
 		expect(
 			screen.getByRole('link', { name: 'Back to home' })

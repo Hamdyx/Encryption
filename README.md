@@ -15,6 +15,7 @@ A small web app for generating random passwords and encrypting/decrypting text w
 - React 19
 - TypeScript
 - Vite
+- Vitest
 - SCSS
 
 ## Requirements
@@ -23,19 +24,19 @@ A small web app for generating random passwords and encrypting/decrypting text w
 
 ## Available Scripts
 
-| Script                 | Description                                                |
-| ---------------------- | ---------------------------------------------------------- |
-| `npm start`            | Runs the app in development mode (Vite dev server)         |
-| `npm run build`        | Type-checks and builds the app for production into `dist/` |
-| `npm run preview`      | Serves the production build locally                        |
-| `npm run lint`         | Lints the codebase with ESLint                             |
-| `npm run lint:fix`     | Lints and auto-fixes issues                                |
-| `npm run format`       | Formats the codebase with Prettier                         |
-| `npm run format:check` | Checks formatting without writing changes                  |
-| `npm run typecheck`    | Type-checks the codebase without emitting output           |
-
-> `npm test` is currently broken (leftover `react-scripts` command from the
-> Create React App era) and will be replaced with Vitest in a follow-up PR.
+| Script                 | Description                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| `npm start`            | Runs the app in development mode (Vite dev server)             |
+| `npm run build`        | Type-checks and builds the app for production into `dist/`     |
+| `npm run preview`      | Serves the production build locally                            |
+| `npm run analyze`      | Builds and generates a bundle-size report at `dist/stats.html` |
+| `npm run lint`         | Lints the codebase with ESLint                                 |
+| `npm run lint:fix`     | Lints and auto-fixes issues                                    |
+| `npm run format`       | Formats the codebase with Prettier                             |
+| `npm run format:check` | Checks formatting without writing changes                      |
+| `npm run typecheck`    | Type-checks the codebase without emitting output               |
+| `npm test`             | Runs the test suite once with Vitest                           |
+| `npm run test:watch`   | Runs the test suite in Vitest watch mode                       |
 
 ## Deployment
 
