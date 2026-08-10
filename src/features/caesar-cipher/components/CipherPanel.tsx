@@ -47,10 +47,10 @@ const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 			? 'Caesar Cipher Encryption'
 			: 'Caesar Cipher Decryption';
 	const actionTitle = mode === 'encrypt' ? 'Encrypt' : 'Decrypt';
-	//* both panels sit on the same page, so every control needs a name that is
-	//* unique to its mode
+	//* both panels sit on the same page, so names are mode-specific where the
+	//* field is wide enough for them; the narrow key input keeps its short
+	//* label and is disambiguated by the panel's own accessible name
 	const textLabel = `text to ${mode}`;
-	const keyLabel = mode === 'encrypt' ? 'encryption key' : 'decryption key';
 	const outputLabel =
 		mode === 'encrypt' ? 'Encrypted text' : 'Decrypted text';
 
@@ -72,7 +72,7 @@ const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 					<AnimatedInput
 						handleOnChange={handleKeyChange}
 						value={rawKey}
-						label={keyLabel}
+						label="key"
 						type="number"
 						min={MIN_KEY}
 						max={MAX_KEY}

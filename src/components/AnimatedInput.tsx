@@ -49,6 +49,7 @@ const AnimatedInput: FunctionComponent<Props> = ({
 				<input
 					id={inputId}
 					type="number"
+					placeholder=" "
 					value={value}
 					onChange={handleOnChange}
 					min={min}
@@ -63,6 +64,7 @@ const AnimatedInput: FunctionComponent<Props> = ({
 				<input
 					id={inputId}
 					type="text"
+					placeholder=" "
 					value={value}
 					onChange={handleOnChange}
 				/>

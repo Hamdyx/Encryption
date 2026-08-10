@@ -12,12 +12,9 @@ const runPanel = (
 	fireEvent.change(screen.getByRole('textbox', { name: `text to ${mode}` }), {
 		target: { value: text },
 	});
-	fireEvent.change(
-		screen.getByRole('spinbutton', {
-			name: mode === 'encrypt' ? 'encryption key' : 'decryption key',
-		}),
-		{ target: { value: key } }
-	);
+	fireEvent.change(screen.getByRole('spinbutton', { name: 'key' }), {
+		target: { value: key },
+	});
 	fireEvent.click(
 		screen.getByRole('button', {
 			name: mode === 'encrypt' ? 'Encrypt' : 'Decrypt',

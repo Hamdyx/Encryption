@@ -4,8 +4,11 @@
 	position: relative;
 	margin: 20px 0 40px;
 
-	textArea {
-		width: 40vw;
+	textarea {
+		//* fluid, but never narrower than a usable line nor wider than the
+		//* half-width column the two cipher panels get on a large screen
+		width: clamp(16rem, 40vw, 34rem);
+		max-width: calc(100vw - 4rem);
 	}
 	input,
 	textarea {
@@ -16,7 +19,10 @@
 		padding: 15px 0;
 		font-size: 1.5rem;
 		color: #fff;
-		&:valid,
+		//* :placeholder-shown rather than :valid, so a number that is briefly
+		//* outside its min/max keeps the label floated instead of dropping it
+		//* back on top of the value
+		&:not(:placeholder-shown),
 		&:focus {
 			border-bottom-color: $main-color;
 			& + label .label_chars span {
