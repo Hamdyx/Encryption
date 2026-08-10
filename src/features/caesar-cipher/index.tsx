@@ -2,8 +2,7 @@ import type { FunctionComponent } from 'react';
 
 import { useEffect } from 'react';
 
-import CipherDecryption from './components/CipherDecryption';
-import CipherEcryption from './components/CipherEncryption';
+import CipherPanel from './components/CipherPanel';
 
 const CaesarCipher: FunctionComponent = () => {
 	useEffect(() => {
@@ -12,8 +11,8 @@ const CaesarCipher: FunctionComponent = () => {
 
 	return (
 		<div className="caesar-cipher">
-			<CipherEcryption />
-			<CipherDecryption />
+			<CipherPanel mode="encrypt" />
+			<CipherPanel mode="decrypt" />
 		</div>
 	);
 };
