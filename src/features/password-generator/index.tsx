@@ -6,34 +6,20 @@ import AnimatedInput from 'components/AnimatedInput';
 import CustomAnimatedBtn from 'components/CustomAnimatedBtn';
 import OutputWithCopy from 'components/OutputWithCopy';
 
+import { generatePassword, MAX_LENGTH, MIN_LENGTH } from './generate';
+
 const PasswordGenerator: FunctionComponent = () => {
-	const [passLen, setPassLen] = useState(6);
+	const [rawLen, setRawLen] = useState('6');
 	const [passStr, setPassStr] = useState('');
 
 	const handleChange = (
 		ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
-		let inputLen = Number.parseInt(ev?.target?.value || '1');
-		inputLen = Math.min(inputLen, 32);
-		setPassLen(inputLen);
+		setRawLen(ev.target.value);
 	};
 
 	const onGeneratePass = () => {
-		//* symbol => 33 | symbol => 47
-		//* number => 48 | number => 57
-		//* symbol => 58 | symbol => 64
-		//* A => 65 | Z => 90
-		//* symbol => 91 | symbol => 96
-		//* a => 97 | z => 122
-		//* symbol => 123 | symbol => 126
-		const passArr = new Array(passLen);
-		for (let i = 0; i < passArr.length; i++) {
-			const randNumber = Math.random() * 93; //* 126 - 33
-			const randCode = Math.floor(randNumber) + 33;
-			const randChar = String.fromCodePoint(randCode);
-			passArr[i] = randChar;
-		}
-		setPassStr(passArr.join(''));
+		setPassStr(generatePassword(Number.parseInt(rawLen, 10)));
 	};
 
 	useEffect(() => {
@@ -49,11 +35,11 @@ const PasswordGenerator: FunctionComponent = () => {
 				<div className="password_length-container">
 					<AnimatedInput
 						handleOnChange={handleChange}
-						value={passLen}
+						value={rawLen}
 						label="length"
 						type="number"
-						min={1}
-						max={10}
+						min={MIN_LENGTH}
+						max={MAX_LENGTH}
 					/>
 				</div>
 				<CustomAnimatedBtn
