@@ -17,14 +17,10 @@ const CustomAnimatedBtn: FunctionComponent<Props> = ({
 			className="custom_animated-btn"
 			onClick={onButtonClick}
 		>
-			<div className="svg-wrapper-1">
-				<div className="svg-wrapper">
-					<svg viewBox="0 0 24 24" width="24" height="24">
-						<AiFillSetting aria-hidden="true" />
-					</svg>
-				</div>
-			</div>
-			<span>{title}</span>
+			<span className="svg-wrapper">
+				<AiFillSetting size={24} aria-hidden="true" />
+			</span>
+			<span className="btn_label">{title}</span>
 		</button>
 	);
 };

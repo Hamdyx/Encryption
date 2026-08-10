@@ -64,10 +64,13 @@
 	border-radius: 16px;
 	overflow: hidden;
 	transition: all 0.2s;
-	span {
+	.svg-wrapper {
+		display: flex;
+	}
+	.btn_label {
 		display: block;
 		margin-left: 0.3em;
-		transition: all 0.3s ease-in-out;
+		transition: transform 0.3s ease-in-out;
 	}
 	svg {
 		display: block;
@@ -82,8 +85,10 @@
 			}
 		}
 
-		span {
-			transform: translateX(5.125em);
+		.btn_label {
+			//* the label's own width plus the button's end padding: slides
+			//* fully out of view whatever the title is
+			transform: translateX(calc(100% + 1em));
 		}
 	}
 	&:active {
