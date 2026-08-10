@@ -18,7 +18,7 @@ const CustomLink: FunctionComponent<{ path: string; title: string }> = ({
 }) => {
 	return (
 		<NavLink to={path} data-text={title} className="custom_link">
-			<span className="actual-text">&nbsp;{title}&nbsp;</span>
+			<span>&nbsp;{title}&nbsp;</span>
 			<span className="hover-text" aria-hidden="true">
 				&nbsp;{title}&nbsp;
 			</span>

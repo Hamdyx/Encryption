@@ -12,17 +12,8 @@
 		padding: 20px;
 		border-radius: 30px 200px;
 		margin: auto;
-		background: #fceabb; /* fallback for old browsers */
-		background: -webkit-linear-gradient(
-			to right,
-			$main-color,
-			$light_main-color
-		); /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(
-			to right,
-			$main-color,
-			$light_main-color
-		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: $light_main-color; /* fallback for old browsers */
+		background: linear-gradient(to right, $main-color, $light_main-color);
 		h1 {
 			//* page titles are h1 but keep the h2 size this banner was built for
 			font-size: 1.5rem;
@@ -90,24 +81,12 @@
 			}
 		}
 	}
-	.password_length-container {
-		flex-direction: column;
-	}
 	.output-container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		margin: 1rem 0;
 		position: relative;
-		h3 {
-			font-size: 1.5rem;
-			font-weight: 700;
-			letter-spacing: 0.25rem;
-			word-spacing: 0.5rem;
-			text-transform: uppercase;
-			filter: drop-shadow(2px 2px 15px black);
-			z-index: 2;
-		}
 		.lock_icon {
 			width: 10rem;
 			height: 10rem;

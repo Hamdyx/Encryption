@@ -45,7 +45,7 @@
 		&:after {
 			content: '';
 			position: absolute;
-			background: #07182e;
+			background: $sub2-color;
 			inset: 5px;
 			border-radius: 15px;
 		}
@@ -107,7 +107,7 @@
 					position: absolute;
 					width: 8%;
 					height: 500%;
-					background: #07182e;
+					background: $sub2-color;
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%, -50%) rotate(-60deg);
