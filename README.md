@@ -1,40 +1,43 @@
-# Encryption
+# Encryption App
 
-Encryption tools web application using different javascript functions to generate, encrypt and decrypt text.
+A small web app for generating random passwords and encrypting/decrypting text with a Caesar cipher.
 
-## Project Stack
+## Routes
 
-- React, Redux, Typescript, SCSS
+| Path         | Description                         |
+| ------------ | ----------------------------------- |
+| `/`          | Landing page                        |
+| `/generator` | Random password generator           |
+| `/cipher`    | Caesar cipher encryption/decryption |
 
-## Features
+## Stack
 
-- Random password generator
-- Caesar cipher encryption and decryption
+- React 19
+- TypeScript
+- Vite
+- SCSS
 
-## In Development
+## Requirements
 
-- Enhancing UX (loading indicator, animations, styles)
-- Adding more options for password generator
-- Optimizing caesar cipher functions
+- Node >= 22.12 (see `.nvmrc`)
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Script                 | Description                                                |
+| ---------------------- | ---------------------------------------------------------- |
+| `npm start`            | Runs the app in development mode (Vite dev server)         |
+| `npm run build`        | Type-checks and builds the app for production into `dist/` |
+| `npm run preview`      | Serves the production build locally                        |
+| `npm run lint`         | Lints the codebase with ESLint                             |
+| `npm run lint:fix`     | Lints and auto-fixes issues                                |
+| `npm run format`       | Formats the codebase with Prettier                         |
+| `npm run format:check` | Checks formatting without writing changes                  |
+| `npm run typecheck`    | Type-checks the codebase without emitting output           |
 
-### `npm start`
+> `npm test` is currently broken (leftover `react-scripts` command from the
+> Create React App era) and will be replaced with Vitest in a follow-up PR.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deployment
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Deployed on [Vercel](https://vercel.com/), configured via `vercel.json` (SPA
+routing, cache headers, security headers). Build output is `dist/`.
