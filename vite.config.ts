@@ -1,18 +1,11 @@
 import react from '@vitejs/plugin-react';
-import path from 'node:path';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	plugins: [react()],
 	resolve: {
-		alias: {
-			src: path.resolve(import.meta.dirname, './src'),
-			components: path.resolve(import.meta.dirname, './src/components'),
-			features: path.resolve(import.meta.dirname, './src/features'),
-			layout: path.resolve(import.meta.dirname, './src/layout'),
-			assets: path.resolve(import.meta.dirname, './src/assets'),
-			style: path.resolve(import.meta.dirname, './src/style'),
-		},
+		// Path aliases come from tsconfig.json "paths" — the single source.
+		tsconfigPaths: true,
 	},
 	server: {
 		port: 3000,

@@ -26,7 +26,7 @@ Routes (`react-router-dom`, `BrowserRouter`):
 | `npm run lint:fix`     | ESLint with `--fix`                        |
 | `npm run format`       | Prettier, writes changes                   |
 | `npm run format:check` | Prettier, check only                       |
-| `npm run typecheck`    | `tsc --noEmit`                             |
+| `npm run typecheck`    | `tsc -b` (covers `src` + the config files) |
 | `npm test`             | Vitest, run once                           |
 | `npm run test:watch`   | Vitest, watch mode                         |
 
@@ -43,11 +43,19 @@ Routes (`react-router-dom`, `BrowserRouter`):
 
 ### Path aliases
 
-`components`, `features`, `layout`, `assets`, `style` are defined as aliases in
-**both** `vite.config.ts` (`resolve.alias`) and `tsconfig.json`
-(`compilerOptions.paths`). Always import through these aliases
+`components`, `features`, `layout`, `assets`, `style` are declared **once**, in
+`tsconfig.json` (`compilerOptions.paths`). Vite picks them up from there via
+`resolve.tsconfigPaths: true` in `vite.config.ts`, so add or rename an alias in
+`tsconfig.json` only. Always import through these aliases
 (`import Navbar from 'layout/Navbar'`) — never use deep relative paths like
 `../../layout/Navbar`.
+
+### TypeScript projects
+
+`tsconfig.json` covers `src` and references `tsconfig.node.json`, which covers
+the toolchain configs (`vite.config.ts`, `eslint.config.ts`) under Node types.
+`npm run typecheck` and `npm run build` both run `tsc -b`, so the config files
+are type-checked too — do not downgrade either back to a bare `tsc`.
 
 ### Conventions
 
