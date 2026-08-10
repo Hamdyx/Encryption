@@ -175,6 +175,11 @@
 			}
 		}
 	}
+	.route-loading {
+		display: block;
+		padding: 2rem;
+		color: $light_main-color;
+	}
 }
 @keyframes slide-up {
 	0% {

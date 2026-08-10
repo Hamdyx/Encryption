@@ -17,18 +17,19 @@ Routes (`react-router-dom`, `BrowserRouter`):
 
 ## Commands
 
-| Command                | Description                                |
-| ---------------------- | ------------------------------------------ |
-| `npm start`            | Dev server (Vite)                          |
-| `npm run build`        | Type-check + production build into `dist/` |
-| `npm run preview`      | Serve the production build locally         |
-| `npm run lint`         | ESLint                                     |
-| `npm run lint:fix`     | ESLint with `--fix`                        |
-| `npm run format`       | Prettier, writes changes                   |
-| `npm run format:check` | Prettier, check only                       |
-| `npm run typecheck`    | `tsc -b` (covers `src` + the config files) |
-| `npm test`             | Vitest, run once                           |
-| `npm run test:watch`   | Vitest, watch mode                         |
+| Command                | Description                                                                          |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `npm start`            | Dev server (Vite)                                                                    |
+| `npm run build`        | Type-check + production build into `dist/`                                           |
+| `npm run preview`      | Serve the production build locally                                                   |
+| `npm run analyze`      | Build with a bundle-size report at `dist/stats.html` (not part of the default build) |
+| `npm run lint`         | ESLint                                                                               |
+| `npm run lint:fix`     | ESLint with `--fix`                                                                  |
+| `npm run format`       | Prettier, writes changes                                                             |
+| `npm run format:check` | Prettier, check only                                                                 |
+| `npm run typecheck`    | `tsc -b` (covers `src` + the config files)                                           |
+| `npm test`             | Vitest, run once                                                                     |
+| `npm run test:watch`   | Vitest, watch mode                                                                   |
 
 ## Architecture
 
