@@ -1,5 +1,7 @@
 import type { FunctionComponent } from 'react';
 
+import { useId } from 'react';
+
 interface Props {
 	handleOnChange: (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -19,9 +21,13 @@ const AnimatedInput: FunctionComponent<Props> = ({
 	min = 1,
 	max = 10,
 }) => {
-	const labelSpan = [...label].map((el: string, i: number) => (
+	const inputId = useId();
+
+	//* the stagger animation needs one element per character; those spans are
+	//* hidden from assistive tech, which reads the plain label text instead
+	const labelChars = [...label].map((char: string, i: number) => (
 		<span key={i} style={{ transitionDelay: `${i * 50}ms` }}>
-			{el}
+			{char}
 		</span>
 	));
 
@@ -30,6 +36,7 @@ const AnimatedInput: FunctionComponent<Props> = ({
 		case 'textarea':
 			InputWrapper = (
 				<textarea
+					id={inputId}
 					placeholder=" "
 					value={value}
 					onChange={handleOnChange}
@@ -40,6 +47,7 @@ const AnimatedInput: FunctionComponent<Props> = ({
 		case 'number':
 			InputWrapper = (
 				<input
+					id={inputId}
 					type="number"
 					value={value}
 					onChange={handleOnChange}
@@ -52,7 +60,12 @@ const AnimatedInput: FunctionComponent<Props> = ({
 
 		default:
 			InputWrapper = (
-				<input type="text" value={value} onChange={handleOnChange} />
+				<input
+					id={inputId}
+					type="text"
+					value={value}
+					onChange={handleOnChange}
+				/>
 			);
 			break;
 	}
@@ -60,7 +73,12 @@ const AnimatedInput: FunctionComponent<Props> = ({
 	return (
 		<div className="animated_input">
 			{InputWrapper}
-			<label>{labelSpan}</label>
+			<label htmlFor={inputId}>
+				<span className="visually-hidden">{label}</span>
+				<span className="label_chars" aria-hidden="true">
+					{labelChars}
+				</span>
+			</label>
 		</div>
 	);
 };

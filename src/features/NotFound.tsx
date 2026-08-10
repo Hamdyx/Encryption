@@ -12,7 +12,7 @@ const NotFound: FunctionComponent = () => {
 		<div className="main_container">
 			<div className="feature_container">
 				<div className="App-header">
-					<h2>Page Not Found</h2>
+					<h1>Page Not Found</h1>
 				</div>
 				<Link to="/">Back to home</Link>
 			</div>

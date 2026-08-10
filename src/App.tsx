@@ -14,12 +14,17 @@ const App: FunctionComponent = () => {
 		<div className="App">
 			<BrowserRouter>
 				<Navbar />
-				<Routes>
-					<Route path="/" element={<Landing />} />
-					<Route path="/generator" element={<PasswordGenerator />} />
-					<Route path="/cipher" element={<CaesarCipher />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
+				<main>
+					<Routes>
+						<Route path="/" element={<Landing />} />
+						<Route
+							path="/generator"
+							element={<PasswordGenerator />}
+						/>
+						<Route path="/cipher" element={<CaesarCipher />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</main>
 			</BrowserRouter>
 		</div>
 	);

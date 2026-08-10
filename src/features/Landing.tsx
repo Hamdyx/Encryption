@@ -12,6 +12,7 @@ const Landing: FunctionComponent = () => {
 
 	return (
 		<div className="main_container">
+			<h1 className="visually-hidden">Encryption App</h1>
 			<MobileEncryption />
 			<div className="cards-container">
 				<FeatureCard title="Password Generator" path="generator" />

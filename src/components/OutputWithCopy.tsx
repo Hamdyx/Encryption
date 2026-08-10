@@ -6,13 +6,21 @@ import { MdContentCopy } from 'react-icons/md';
 
 interface Props {
 	outputText: string;
+	label: string;
 	fieldStyle?: string;
 }
 
 type CopyStatus = 'idle' | 'copied' | 'failed';
 
+const COPY_MESSAGE: Record<CopyStatus, string> = {
+	idle: '',
+	copied: 'Text Copied!',
+	failed: 'Copy failed!',
+};
+
 const OutputWithCopy: FunctionComponent<Props> = ({
 	outputText,
+	label,
 	fieldStyle,
 }) => {
 	const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
@@ -36,28 +44,27 @@ const OutputWithCopy: FunctionComponent<Props> = ({
 	};
 
 	return (
-		<div className={`output-container`}>
-			<AiFillLock className="lock_icon" />
+		<div className="output-container">
+			<AiFillLock className="lock_icon" aria-hidden="true" />
 			<div className={`output-box ${fieldStyle ?? ''}`}>
-				<div className="copy_container">
-					<button
-						type="button"
-						className="copy_button"
-						onClick={handleCopyOutput}
-						disabled={!outputText}
-					>
-						<MdContentCopy className="copy_icon" />
-					</button>
-					<span
-						className={`copy_text ${copyStatus === 'idle' ? '' : '--show'}`}
-					>
-						{copyStatus === 'failed'
-							? 'Copy failed!'
-							: 'Text Copied!'}
-					</span>
-				</div>
+				<button
+					type="button"
+					className="copy_button"
+					onClick={handleCopyOutput}
+					disabled={!outputText}
+					aria-label="Copy to clipboard"
+				>
+					<MdContentCopy aria-hidden="true" />
+				</button>
+				<span
+					role="status"
+					aria-live="polite"
+					className={`copy_text ${copyStatus === 'idle' ? '' : '--show'}`}
+				>
+					{COPY_MESSAGE[copyStatus]}
+				</span>
 
-				{outputText}
+				<output aria-label={label}>{outputText}</output>
 			</div>
 		</div>
 	);

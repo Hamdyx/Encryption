@@ -14,15 +14,31 @@ beforeEach(() => {
 
 describe('OutputWithCopy', () => {
 	it('disables the copy button when there is no output', () => {
-		render(<OutputWithCopy outputText="" />);
+		render(<OutputWithCopy outputText="" label="Generated password" />);
 
-		expect(screen.getByRole('button')).toBeDisabled();
+		expect(
+			screen.getByRole('button', { name: 'Copy to clipboard' })
+		).toBeDisabled();
+	});
+
+	it('exposes the output under its accessible name', () => {
+		render(
+			<OutputWithCopy outputText="secret" label="Generated password" />
+		);
+
+		expect(screen.getByLabelText('Generated password')).toHaveTextContent(
+			'secret'
+		);
 	});
 
 	it('shows the success tooltip after a successful copy', async () => {
 		writeText.mockResolvedValueOnce(undefined);
-		const { container } = render(<OutputWithCopy outputText="secret" />);
-		const button = screen.getByRole('button');
+		const { container } = render(
+			<OutputWithCopy outputText="secret" label="Generated password" />
+		);
+		const button = screen.getByRole('button', {
+			name: 'Copy to clipboard',
+		});
 		expect(button).toBeEnabled();
 
 		fireEvent.click(button);
@@ -32,14 +48,19 @@ describe('OutputWithCopy', () => {
 		) as HTMLSpanElement;
 		await waitFor(() => expect(tooltip).toHaveClass('--show'));
 		expect(tooltip).toHaveTextContent('Text Copied!');
+		expect(tooltip).toHaveAttribute('aria-live', 'polite');
 		expect(writeText).toHaveBeenCalledWith('secret');
 	});
 
 	it('shows a failure message, not success, when the clipboard write fails', async () => {
 		writeText.mockRejectedValueOnce(new Error('denied'));
-		const { container } = render(<OutputWithCopy outputText="secret" />);
+		const { container } = render(
+			<OutputWithCopy outputText="secret" label="Generated password" />
+		);
 
-		fireEvent.click(screen.getByRole('button'));
+		fireEvent.click(
+			screen.getByRole('button', { name: 'Copy to clipboard' })
+		);
 
 		const tooltip = container.querySelector(
 			'.copy_text'

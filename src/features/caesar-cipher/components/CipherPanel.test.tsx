@@ -2,32 +2,31 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import CipherPanel from './CipherPanel';
 
-// TODO(a11y phase): AnimatedInput's <label> isn't associated with its input
-// via htmlFor/id, so getByLabelText doesn't work here — falls back to
-// container queries until that's fixed.
 const runPanel = (
 	mode: 'encrypt' | 'decrypt',
 	text: string,
 	key: string
 ): string | null | undefined => {
-	const { container, unmount } = render(<CipherPanel mode={mode} />);
-	const textArea = container.querySelector('textarea') as HTMLTextAreaElement;
-	const keyInput = container.querySelector(
-		'input[type="number"]'
-	) as HTMLInputElement;
+	const { unmount } = render(<CipherPanel mode={mode} />);
 
-	fireEvent.change(textArea, { target: { value: text } });
-	fireEvent.change(keyInput, { target: { value: key } });
+	fireEvent.change(screen.getByRole('textbox', { name: `text to ${mode}` }), {
+		target: { value: text },
+	});
+	fireEvent.change(
+		screen.getByRole('spinbutton', {
+			name: mode === 'encrypt' ? 'encryption key' : 'decryption key',
+		}),
+		{ target: { value: key } }
+	);
 	fireEvent.click(
 		screen.getByRole('button', {
 			name: mode === 'encrypt' ? 'Encrypt' : 'Decrypt',
 		})
 	);
 
-	// .output-box also contains the (hidden) "Text Copied!" tooltip span as a
-	// DOM sibling, so read the trailing text node rather than textContent.
-	const output =
-		container.querySelector('.output-box')?.lastChild?.textContent;
+	const output = screen.getByLabelText(
+		mode === 'encrypt' ? 'Encrypted text' : 'Decrypted text'
+	).textContent;
 	unmount();
 	return output;
 };

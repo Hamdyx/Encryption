@@ -23,6 +23,10 @@
 			$main-color,
 			$light_main-color
 		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		h1 {
+			//* page titles are h1 but keep the h2 size this banner was built for
+			font-size: 1.5rem;
+		}
 	}
 	.main_container {
 		display: flex;

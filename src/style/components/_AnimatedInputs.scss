@@ -8,7 +8,7 @@
 		width: 40vw;
 	}
 	input,
-	textArea {
+	textarea {
 		background-color: transparent;
 		border: 0;
 		border-bottom: 2px #fff solid;
@@ -18,14 +18,11 @@
 		color: #fff;
 		&:valid,
 		&:focus {
-			outline: 0;
 			border-bottom-color: $main-color;
-			& + label {
-				span {
-					color: $main-color;
-					filter: drop-shadow(0 0 5px $main-color);
-					transform: translateY(-50px);
-				}
+			& + label .label_chars span {
+				color: $main-color;
+				filter: drop-shadow(0 0 5px $main-color);
+				transform: translateY(-50px);
 			}
 		}
 	}
@@ -34,12 +31,12 @@
 		top: 15px;
 		left: 0;
 		pointer-events: none;
-		span {
+		.label_chars span {
 			display: inline-block;
 			min-width: 5px;
 			color: #fff;
 			transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-			&:nth-child(1) {
+			&:first-child {
 				text-transform: capitalize;
 			}
 		}
