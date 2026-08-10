@@ -1,7 +1,6 @@
 import type { FunctionComponent } from 'react';
 
 import { useState } from 'react';
-import ReactGA from 'react-ga4';
 
 import AnimatedInput from 'components/AnimatedInput';
 import CustomAnimatedBtn from 'components/CustomAnimatedBtn';
@@ -60,10 +59,6 @@ const CipherDecryption: FunctionComponent = () => {
 		}
 		const tmp = _encrypted.join('');
 		setDecryptedStr(tmp);
-		ReactGA.event({
-			category: 'Caesar Cipher',
-			action: 'Cipher Decryption',
-		});
 	};
 
 	return (

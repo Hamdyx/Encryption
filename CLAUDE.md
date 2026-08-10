@@ -27,9 +27,8 @@ Routes (`react-router-dom`, `BrowserRouter`):
 | `npm run format`       | Prettier, writes changes                   |
 | `npm run format:check` | Prettier, check only                       |
 | `npm run typecheck`    | `tsc --noEmit`                             |
-
-`npm test` is currently a broken `react-scripts` leftover; it will be replaced
-with Vitest in a later phase.
+| `npm test`             | Vitest, run once                           |
+| `npm run test:watch`   | Vitest, watch mode                         |
 
 ## Architecture
 
@@ -78,16 +77,14 @@ with Vitest in a later phase.
 Before declaring any task done, all of the following must pass:
 
 ```
-npm run format:check && npm run lint && npm run typecheck && npm run build
+npm run format:check && npm run lint && npm run typecheck && npm test && npm run build
 ```
-
-(Add `npm test` to this list once a real Vitest suite exists.)
 
 ## Rules
 
 - No new dependency without stating why it's needed.
 - All interactive elements need accessible names.
-- Behavior changes require tests (once the test suite exists).
+- Behavior changes require tests.
 - No analytics/tracking additions without explicit approval.
 
 ## Deferred upgrades

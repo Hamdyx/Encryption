@@ -1,7 +1,6 @@
 import type { FunctionComponent } from 'react';
 
 import { useState } from 'react';
-import ReactGA from 'react-ga4';
 
 import AnimatedInput from 'components/AnimatedInput';
 import OutputWithCopy from 'components/OutputWithCopy';
@@ -59,10 +58,6 @@ const CipherEncryption: FunctionComponent = () => {
 		}
 		const tmp = _encrypted.join('');
 		setEncryptedStr(tmp);
-		ReactGA.event({
-			category: 'Caesar Cipher',
-			action: 'Cipher Encryption',
-		});
 	};
 
 	return (

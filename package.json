@@ -9,7 +9,6 @@
 	"dependencies": {
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
-		"react-ga4": "^2.1.0",
 		"react-icons": "^5.6.0",
 		"react-router-dom": "^7.5.0"
 	},
@@ -17,7 +16,8 @@
 		"start": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"test": "npx react-scripts test --env=jsdom",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"format": "prettier --write .",
@@ -28,7 +28,7 @@
 		"@eslint/js": "^9.39.4",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.3.0",
-		"@types/jest": "^29.5.14",
+		"@testing-library/user-event": "^14.6.3",
 		"@types/node": "^22.15.0",
 		"@types/react": "^19.1.2",
 		"@types/react-dom": "^19.1.2",
@@ -40,10 +40,12 @@
 		"eslint-plugin-simple-import-sort": "^12.1.1",
 		"globals": "^17.4.0",
 		"jiti": "^2.6.1",
+		"jsdom": "^29.1.1",
 		"prettier": "^3.9.6",
 		"sass": "^1.87.0",
 		"typescript": "^5.8.3",
 		"typescript-eslint": "^8.57.2",
-		"vite": "^6.3.2"
+		"vite": "^6.3.2",
+		"vitest": "^4.1.10"
 	}
 }
