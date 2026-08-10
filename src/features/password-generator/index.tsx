@@ -1,7 +1,6 @@
 import type { FunctionComponent } from 'react';
 
 import { useEffect, useState } from 'react';
-import ReactGA from 'react-ga4';
 
 import AnimatedInput from 'components/AnimatedInput';
 import CustomAnimatedBtn from 'components/CustomAnimatedBtn';
@@ -35,10 +34,6 @@ const PasswordGenerator: FunctionComponent = () => {
 			passArr[i] = randChar;
 		}
 		setPassStr(passArr.join(''));
-		ReactGA.event({
-			category: 'Password',
-			action: 'Generate Pass',
-		});
 	};
 
 	useEffect(() => {

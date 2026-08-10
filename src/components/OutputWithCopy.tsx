@@ -1,7 +1,6 @@
 import type { FunctionComponent } from 'react';
 
 import { useRef } from 'react';
-import ReactGA from 'react-ga4';
 import { AiFillLock } from 'react-icons/ai';
 import { MdContentCopy } from 'react-icons/md';
 
@@ -20,10 +19,6 @@ const OutputWithCopy: FunctionComponent<Props> = ({
 		globalThis.navigator.clipboard.writeText(outputText);
 		tooltipRef?.current?.classList.add('--show');
 		setTimeout(() => tooltipRef?.current?.classList.remove('--show'), 1000);
-		ReactGA.event({
-			category: 'Output',
-			action: 'Copy Text',
-		});
 	};
 
 	return (
