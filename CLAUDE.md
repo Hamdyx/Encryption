@@ -89,6 +89,12 @@ npm run format:check && npm run lint && npm run typecheck && npm test && npm run
 
 ## Deferred upgrades
 
-- `react-router-dom` (`^7.5.0`) has multiple known advisories fixable via
-  `npm audit fix` (a version bump within the `7.x` range). Not addressed here
-  per instruction not to upgrade existing dependencies in this phase.
+- **ESLint 10** — `eslint-plugin-react@7.37.5` (latest stable) declares
+  `peerDependencies.eslint: "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7"`, so it
+  has no ESLint 10 support; npm resolves `eslint@10` only by overriding that
+  peer. Every other plugin in the stack is ready (`typescript-eslint` accepts
+  `^10.0.0`, `eslint-plugin-react-hooks` accepts `^10.0.0`,
+  `simple-import-sort` and `eslint-config-prettier` are unbounded). The whole
+  group is therefore held at the latest 9.x — never mix ESLint majors across
+  plugins. Revisit when `eslint-plugin-react` ships a stable release with an
+  `^10` peer (only a `7.8.0-rc.0` pre-release exists on the `next` tag).
