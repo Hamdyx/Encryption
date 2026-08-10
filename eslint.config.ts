@@ -1,4 +1,5 @@
 import { defineConfig } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -60,4 +61,5 @@ export default defineConfig([
 			'simple-import-sort/exports': 'error',
 		},
 	},
+	eslintConfigPrettier,
 ]);
