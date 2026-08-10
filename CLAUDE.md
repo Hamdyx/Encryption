@@ -98,3 +98,13 @@ npm run format:check && npm run lint && npm run typecheck && npm test && npm run
   group is therefore held at the latest 9.x — never mix ESLint majors across
   plugins. Revisit when `eslint-plugin-react` ships a stable release with an
   `^10` peer (only a `7.8.0-rc.0` pre-release exists on the `next` tag).
+
+- **TypeScript 7** — held at the latest `5.9.x` patch. TS 7 is the native
+  (Go) port of the compiler and `typescript-eslint@8.67.0` declares
+  `peerDependencies.typescript: ">=4.8.4 <6.1.0"`, so it cannot type-check
+  this project's lint setup. Revisit once typescript-eslint publishes a
+  release with a TS 7 peer range.
+
+- **jsdom 30** — held at `29.x`. jsdom 30 requires Node `^22.22.2 || ^24.15.0
+|| >=26.0.0`, which is above this project's `>=22.12` engines floor. Bump
+  the Node floor first, then take jsdom 30.
