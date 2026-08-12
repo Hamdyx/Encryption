@@ -9,6 +9,10 @@
 		//* half-width column the two cipher panels get on a large screen
 		width: clamp(16rem, 40vw, 34rem);
 		max-width: calc(100vw - 4rem);
+		min-height: 3.5rem;
+		max-height: 40vh;
+		resize: vertical;
+		field-sizing: content;
 	}
 	input,
 	textarea {

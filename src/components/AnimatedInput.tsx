@@ -40,6 +40,7 @@ const AnimatedInput: FunctionComponent<Props> = ({
 					placeholder=" "
 					value={value}
 					onChange={handleOnChange}
+					rows={3}
 					required
 				/>
 			);
