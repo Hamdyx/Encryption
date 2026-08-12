@@ -95,6 +95,8 @@ npm run format:check && npm run lint && npm run typecheck && npm test && npm run
 - All interactive elements need accessible names.
 - Behavior changes require tests.
 - No analytics/tracking additions without explicit approval.
+- Dependencies are pinned to exact versions (`.npmrc` sets `save-exact=true`);
+  install new packages with plain `npm install`, never `--save-exact=false`.
 
 ## Deferred upgrades
 
