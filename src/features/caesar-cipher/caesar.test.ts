@@ -1,4 +1,19 @@
-import { caesarShift } from './caesar';
+import { caesarShift, normalizeShift } from './caesar';
+
+describe('normalizeShift', () => {
+	it.each([
+		[0, 0],
+		[26, 0],
+		[52, 0],
+		[30, 4],
+		[-1, 25],
+		[-27, 25],
+		[4.9, 4],
+		[NaN, 0],
+	])('normalizes %p to %p', (input, expected) => {
+		expect(normalizeShift(input)).toBe(expected);
+	});
+});
 
 describe('caesarShift', () => {
 	it('round-trips for keys sampled across -30..60', () => {

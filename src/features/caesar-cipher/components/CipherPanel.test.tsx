@@ -46,7 +46,23 @@ describe('CipherPanel (encrypt)', () => {
 	});
 
 	it('does not crash on an empty key and lets the field be cleared', () => {
-		expect(runPanel('encrypt', 'abc', '')).toBe('bcd');
+		expect(runPanel('encrypt', 'abc', '')).toBe('');
+	});
+
+	it('accepts a key beyond the alphabet size', () => {
+		expect(runPanel('encrypt', 'abc', '30')).toBe('efg');
+	});
+
+	it('accepts a key of 0', () => {
+		expect(runPanel('encrypt', 'abc', '0')).toBe('abc');
+	});
+
+	it('accepts a key of 26', () => {
+		expect(runPanel('encrypt', 'abc', '26')).toBe('abc');
+	});
+
+	it('accepts a negative key', () => {
+		expect(runPanel('encrypt', 'abc', '-1')).toBe('zab');
 	});
 });
 
@@ -57,6 +73,45 @@ describe('CipherPanel (decrypt)', () => {
 
 	it('wraps around the start of the alphabet', () => {
 		expect(runPanel('decrypt', 'abc', '3')).toBe('xyz');
+	});
+});
+
+describe('CipherPanel output clearing', () => {
+	it('clears the output when the text or key is edited after transforming', () => {
+		render(<CipherPanel mode="encrypt" />);
+
+		fireEvent.change(
+			screen.getByRole('textbox', { name: 'text to encrypt' }),
+			{
+				target: { value: 'abc' },
+			}
+		);
+		fireEvent.change(screen.getByRole('spinbutton', { name: 'key' }), {
+			target: { value: '1' },
+		});
+		fireEvent.click(screen.getByRole('button', { name: 'Encrypt' }));
+
+		expect(screen.getByLabelText('Encrypted text').textContent).toBe('bcd');
+
+		fireEvent.change(
+			screen.getByRole('textbox', { name: 'text to encrypt' }),
+			{
+				target: { value: 'abcd' },
+			}
+		);
+
+		expect(screen.getByLabelText('Encrypted text').textContent).toBe('');
+
+		fireEvent.click(screen.getByRole('button', { name: 'Encrypt' }));
+		expect(screen.getByLabelText('Encrypted text').textContent).toBe(
+			'bcde'
+		);
+
+		fireEvent.change(screen.getByRole('spinbutton', { name: 'key' }), {
+			target: { value: '2' },
+		});
+
+		expect(screen.getByLabelText('Encrypted text').textContent).toBe('');
 	});
 });
 
