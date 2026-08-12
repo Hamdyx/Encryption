@@ -69,6 +69,18 @@ are type-checked too — do not downgrade either back to a bare `tsc`.
   rather than hand-formatting.
 - SCSS variables live in `src/style/abstracts/_variables.scss` — no hardcoded
   colors in component styles.
+- Exported utility functions need JSDoc when their signature isn't
+  self-explanatory (non-obvious params, return shape, or behavior) — skip it
+  when the name and types already say everything.
+
+## Agent workflow
+
+- Plans are generated in plan mode and organized into phases, one branch and
+  one PR per phase.
+- Each phase carries a ready-to-paste implementation prompt, annotated with a
+  recommended model tier and reasoning-effort size.
+- Agents executing in auto-accept modes must stop and obtain explicit
+  approval before any commit — this reinforces Git workflow rule 4 below.
 
 ## Git workflow (mandatory)
 

@@ -1,5 +1,7 @@
 # Encryption App
 
+[![CI](https://github.com/Hamdyx/Encryption/actions/workflows/ci.yml/badge.svg)](https://github.com/Hamdyx/Encryption/actions/workflows/ci.yml)
+
 A small web app for generating random passwords and encrypting/decrypting text with a Caesar cipher.
 
 ## Routes
@@ -37,6 +39,12 @@ A small web app for generating random passwords and encrypting/decrypting text w
 | `npm run typecheck`    | Type-checks the codebase without emitting output               |
 | `npm test`             | Runs the test suite once with Vitest                           |
 | `npm run test:watch`   | Runs the test suite in Vitest watch mode                       |
+
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs on every pull request and on
+pushes to `main`, executing five gates in sequence: `npm run format:check`,
+`npm run lint`, `npm run typecheck`, `npm test`, and `npm run build`.
 
 ## Deployment
 
