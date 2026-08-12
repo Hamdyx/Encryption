@@ -68,7 +68,9 @@
 		label {
 			font-size: 1.5rem;
 		}
-		input {
+		//* only the number fields get the narrow, centred treatment — other
+		//* controls (checkboxes) bring their own sizing
+		input[type='number'] {
 			width: 100px;
 			text-align: center;
 
@@ -76,6 +78,33 @@
 			&::-webkit-inner-spin-button {
 				margin: 0;
 			}
+		}
+	}
+	.charset_options {
+		border: 1px solid #ffffff2e;
+		border-radius: 10px;
+		margin: 0 auto;
+		padding: 0.75rem 1.25rem 1rem;
+		background: #ffffff14;
+		legend {
+			padding: 0 0.5rem;
+			font-size: 1rem;
+			color: $light_main-color;
+		}
+		.charset_options-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			column-gap: 1.25rem;
+			row-gap: 0.5rem;
+		}
+		.charset_hint {
+			//* holds a line of space whether or not the hint is showing, so
+			//* toggling the last character type off does not shift the layout
+			min-height: 1.25rem;
+			margin-block-start: 0.5rem;
+			font-size: 0.875rem;
+			color: $main-color;
 		}
 	}
 	.output-container {

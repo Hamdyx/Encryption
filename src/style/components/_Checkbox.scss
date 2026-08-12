@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as *;
+
+.checkbox {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	input[type='checkbox'] {
+		//* the native control, recoloured rather than replaced, so keyboard
+		//* focus and the checked state keep their built-in semantics
+		width: 1.15rem;
+		height: 1.15rem;
+		margin: 0;
+		accent-color: $main-color;
+		cursor: pointer;
+	}
+	label {
+		font-size: 1rem;
+		text-transform: capitalize;
+		cursor: pointer;
+		user-select: none;
+	}
+}
