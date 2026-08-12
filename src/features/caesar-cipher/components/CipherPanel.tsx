@@ -12,9 +12,6 @@ interface Props {
 	mode: 'encrypt' | 'decrypt';
 }
 
-export const MIN_KEY = 1;
-export const MAX_KEY = 26;
-
 const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 	const headingId = useId();
 	const [rawKey, setRawKey] = useState('1');
@@ -25,19 +22,21 @@ const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 		ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		setInputText(ev.target.value);
+		setOutputStr('');
 	};
 
 	const handleKeyChange = (
 		ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		setRawKey(ev.target.value);
+		setOutputStr('');
 	};
 
 	const onTransformText = () => {
-		const parsed = Number.parseInt(rawKey, 10);
-		const key = Number.isNaN(parsed)
-			? MIN_KEY
-			: Math.min(Math.max(parsed, MIN_KEY), MAX_KEY);
+		const key = Number.parseInt(rawKey, 10);
+		if (Number.isNaN(key)) {
+			return;
+		}
 		const shift = mode === 'encrypt' ? key : -key;
 		setOutputStr(caesarShift(inputText, shift));
 	};
@@ -74,8 +73,6 @@ const CipherPanel: FunctionComponent<Props> = ({ mode }) => {
 						value={rawKey}
 						label="key"
 						type="number"
-						min={MIN_KEY}
-						max={MAX_KEY}
 					/>
 				</div>
 			</div>

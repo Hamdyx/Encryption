@@ -18,8 +18,8 @@ const AnimatedInput: FunctionComponent<Props> = ({
 	value,
 	label = 'text',
 	type = 'text',
-	min = 1,
-	max = 10,
+	min,
+	max,
 }) => {
 	const inputId = useId();
 
