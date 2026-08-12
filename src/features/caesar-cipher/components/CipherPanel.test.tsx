@@ -76,6 +76,16 @@ describe('CipherPanel (decrypt)', () => {
 	});
 });
 
+describe('CipherPanel textarea sizing', () => {
+	it('renders the text field with rows=3', () => {
+		render(<CipherPanel mode="encrypt" />);
+
+		expect(
+			screen.getByRole('textbox', { name: 'text to encrypt' })
+		).toHaveAttribute('rows', '3');
+	});
+});
+
 describe('CipherPanel output clearing', () => {
 	it('clears the output when the text or key is edited after transforming', () => {
 		render(<CipherPanel mode="encrypt" />);
